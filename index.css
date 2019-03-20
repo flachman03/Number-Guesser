@@ -1,69 +1,170 @@
-/** { 
-	 border-style: border-box;
-	 border: 1px solid grey;
-}*/
-/*----------Main Body---------*/
+* {
+	font-family: 'Open Sans', sans-serif;
+}
 
-body {
+.flex {
 	display: flex;
-	flex-direction: column;
 }
 
 main {
-	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
-/*----------Left Section---------*/
-.left-section{
-	flex: 1;
+header {
+	text-align: center;
+	background-color: #404041;
+	padding: 8px;
+}
+
+h1 {
+	color: #dd1972;
+	font-weight: 700;
+	font-size: 38pt;
+	/*margin: -8px;*/
+}
+
+.title-light {
+	font-weight: 300;
+}
+
+h2 {
+	color: #ffffff;
+	font-weight: 300;
+	font-size: 12pt;
+}
+
+.button {
+	border-radius: 20px;
+}
+
+.middle-buttons {
+    width: 30%;
+}
+
+.mid-buttons {
+	margin-top: 20px;
+	justify-content: space-around;
+}
+
+.main-left {
+	width: 50%;
+	justify-content: space-around;
 	flex-direction: column;
-	align-items: space-around;
+	background-color: #f7f7f7;
 }
 
-.score-box {
-	display: flex;
+.left-box {
+    margin: 10px;
+    background-color: white;
+    border: solid lightgray;
+}
+
+h5 {
+	width: 100%;
+	margin: 0;
+}
+
+label {
+	display: block;
+}
+
+input {
+	width: 100%;
+}
+
+.left-1 {
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 10px;
+}
+
+.range-box {
+	width: 100%;
+	justify-content: space-around;
+}
+
+.min-range {
+	width: 33%;
 	flex-direction: column;
-	height: 20%;
 }
 
-.score-box-in {
-	display: flex;
+.max-range {
+	width: 33%;
+	flex-direction: column;
+
 }
 
-.challenger-one-score {
-	display: flex;
-	flex: 1;
+.update-button {
+	width: 20%;
+	align-self: flex-end;
+}
+
+.input-height {
+	padding: 10px;
+}
+
+.left-2 {
 	flex-direction: column;
 }
 
-.challenger-two-score {
-	display: flex;
-	flex: 1;
-	flex-direction: column;
+.left-3 {
+	flex-direction: row;
+	flex: auto;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
 }
-/*----------Right Section--------*/
-.right-section {
-	flex: 1;
-	height: 100%;
+
+.forms-flex {
+	flex-direction: row;
+}
+
+.chall-name {
+	flex: 5;
+}
+
+.chall-guess {
+	flex: 2;
+}
+
+.big-number-box {
+	flex-direction: column;
+	flex: auto;
+	text-align: center;
+}
+
+.number-boxes {
+	width: 100%;
+}
+
+.latest-score {
+	width: 100%;
+	margin: 0;
+}
+
+.main-right {
+	padding: 10px;
+	width: 50%;
+	justify-content: center;
+	background-color: #d0d2d3;
 }
 
 .cards {
-	display: flex;
-	flex-direction: column;
-	border: 1px solid grey;
-	height: 20%;
 	width: 70%;
+	border: solid black;
+	flex-direction: column;
+	height: 200px;
+	width: 600px;
+	margin: 10px 30px;
 }
-.card-top {
-	display: flex;
+
+.card-top, .card-bottom {
 	flex-direction: row;
+	justify-content: space-around;
 }
+
 .card-middle {
-	display: flex;
+	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-}
-.card-bottom {
-	display: flex;
-	flex-direction: row;
-}
