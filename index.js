@@ -1,3 +1,5 @@
+/----------Global Variables----------/
+
 var maxRange = document.querySelector('#max-range');
 var minRange = document.querySelector('#min-range');
 var updateButton = document.querySelector('#update-button');
@@ -13,19 +15,41 @@ var clearButton = document.querySelector('#clear-button');
 var chalOneName = document.querySelectorAll('.chal-one-name');
 var chalTwoName = document.querySelectorAll('.chal-two-name');
 
+/----------Event Listeners----------/
+
+updateButton.addEventListener('click', function() {
+	rangeFunc();
+});
+
+// submitButton.addEventListener('click', function() {
+// 	chalNames();
+// });
+
+/----------Functions----------/
 function randomNumber() {
-	var random = Math.floor(Math.random(maxRange-minRange) + minRange);
+	var random = Math.ceil(Math.random()*((maxRange.value - minRange.value) + 1) + minRange.value);
 	console.log(random);
 	return random;
 };
 
-updateButton.addEventListener('click', function() {
+function rangeFunc() {
 	minSpan.innerText = minRange.value;
 	maxSpan.innerText = maxRange.value;
-	console.log(minRange);
-	console.log(maxRange);
 	randomNumber();
-})
+};
 
+// function chalNames() {
+// 	for (i = 0; i < chalOneName.length; i++) {
+// 		oneNameInput[i].innerText = chalOneName.value;
+// 		console.log(oneNameInput[i])
+// 	};
 
+// 	for (i = 0; i < chalTwoName.length; i++) {
+// 		twoNameInput[i].innerText = chalTwoName.value;
+// 	};
+// };
+
+for (i = 0; i < chalOneName.length; i++) {
+	
+}
 
