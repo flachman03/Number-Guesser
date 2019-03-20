@@ -1,0 +1,69 @@
+/** { 
+	 border-style: border-box;
+	 border: 1px solid grey;
+}*/
+/*----------Main Body---------*/
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	display: flex;
+}
+
+/*----------Left Section---------*/
+.left-section{
+	flex: 1;
+	flex-direction: column;
+	align-items: space-around;
+}
+
+.score-box {
+	display: flex;
+	flex-direction: column;
+	height: 20%;
+}
+
+.score-box-in {
+	display: flex;
+}
+
+.challenger-one-score {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.challenger-two-score {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+/*----------Right Section--------*/
+.right-section {
+	flex: 1;
+	height: 100%;
+}
+
+.cards {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid grey;
+	height: 20%;
+	width: 70%;
+}
+.card-top {
+	display: flex;
+	flex-direction: row;
+}
+.card-middle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.card-bottom {
+	display: flex;
+	flex-direction: row;
+}

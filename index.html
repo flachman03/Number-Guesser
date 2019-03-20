@@ -5,7 +5,7 @@
   <title>Number Guesser</title>
 </head>
 <body>
-  <header>
+  <header class="header">
   	<h1>NumberGuesser</h1>
   	<h2>Ultimate Challenger Edition</h2>
   </header>
@@ -14,57 +14,61 @@
   		<div class="set-range-box">
   			<h5>Set Range</h5>
   			<form>
+  				<div>
   				<label for="min-range-input">Min Range</label>
-  				<input type="text" name="min-range-input">
+  				<input type="text" name="min-range-input" id="min-range">
   				<label for="max-range-input">Max Range</label>
-  				<input type="text" name="max-range-input">
-  				<input type="button" name="Update">
+  				<input type="text" name="max-range-input" id="max-range">
+  				<input type="button" name="Update" id="update-button">
   			</form>
   		</div>
   		<div class="guess-box">
-  			<p>The Current Range is <span>0</span> to <span>0</span></p>
-  			<form>
-  				<label for="challenger-one-input">Challenger 1</label>
-  				<label for="challenger-one-input">Name</label>
-  				<input type="text" name="challenger-one-input">
-  				<label for="challenger-one-guess">Guess</label>
-  				<input type="text" name="challenger-one-guess">
-  			</form>
-  			<form>
-  				<label for="challenger-two-input">Challenger 2</label>
-  				<label for="challenger-two-input">Name</label>
-  				<input type="text" name="challenger-two-input">
-  				<label for="challenger-two-guess">Guess</label>
-  				<input type="text" name="challenger-two-guess">
-  			</form>
-  			<form>
-  				<input type="button" name="SUBMIT GUESS">
-  				<input type="button" name="RESET GUESS">
-  				<input type="button" name="CLEAR GAME">
-  			</form>
+  			<p>The Current Range is <span id="span-min">0</span> to <span id="span-max">0</span></p>
+  			<div class="forms">
+	  			<form>
+	  				<label for="challenger-one-input" id="one-name"><span class="chal-one-name">Challenger 1</span></label>
+	  				<label for="challenger-one-input">Name</label>
+	  				<input type="text" name="challenger-one-input" id="one-input">
+	  				<label for="challenger-one-guess">Guess</label>
+	  				<input type="Number" name="challenger-one-guess" id="one-guess">
+	  			</form>
+	  			<form>
+	  				<label for="challenger-two-input" id="two-name"><span class="chal-two-name">Challenger 2</span></label>
+	  				<label for="challenger-two-input">Name</label>
+	  				<input type="text" name="challenger-two-input" id="two-input">
+	  				<label for="challenger-two-guess">Guess</label>
+	  				<input type="Number" name="challenger-two-guess" id="two-guess">
+	  			</form>
+	  		</div>
+	  			<form>
+	  				<input type="button" name="SUBMIT GUESS" id="submit-button">
+	  				<input type="button" name="RESET GUESS" id="reset-button">
+	  				<input type="button" name="CLEAR GAME" id="clear-button">
+	  			</form>
   		</div>
   		<div class="score-box">
   			<h3>Latest Score</h3>
+  			<div class="score-box-in">
   			<div class="challenger-one-score">
-  				<p>Challenger 1 Name</p>
+  				<p><span class='chal-one-name'>Challenger 1 Name</span></p>
   				<p>current guess</p>
   				<p><span>None</span></p>
   				<p>No Current Guess</p>
   			</div>
   			<div class="challenger-two-score">
-  				<p>Challenger 2 Name</p>
+  				<p><span class="chal-two-name">Challenger 2 Name</span></p>
   				<p>Current Guess</p>
   				<p><span>None</span></p>
   				<p>No Current Guess</p>
   			</div>
   		</div>
   	</section>
-  	<section class="cards-section">
+  	<section class="right-section">
   		<div class="cards">
   			<div class="card-top">
-  				<p><span>Challenger Name</span></p>
+  				<p><span class="chal-one-name">Challenger Name</span></p>
   				<p>VS</p>
-  				<p><span>Challenger Name</span></p>
+  				<p><span class="chal-two-name">Challenger Name</span></p>
   			</div>
   			<div class="card-middle">
   				<h3><span>Challenger 1 Name</span></h3>
@@ -78,5 +82,6 @@
   		</div>
   	</section>
   </main>
+  <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
