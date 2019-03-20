@@ -32,34 +32,22 @@ h2 {
 	color: #ffffff;
 	font-weight: 300;
 	font-size: 12pt;
+	justify-content: center;
 }
 
-h1:before {
+h2::before,
+h2::after {
+  display: block;
   content: "";
   border-top: solid 2px white;
-  width: 70px;
+  width: 100px;
   height: 1px;
-  position: absolute;
-  top: 150px;
   z-index: 1;
+  align-self: center;
 }
 
-h1:after {
-  content: "";
-  border-top: solid 2px white;
-  width: 70px;
-  height: 1px;
-  position: absolute;
-  top: 150px;
-  right: 500px;
-  z-index: 1;
-}
-
-.sub-title {
-  background-color: #404041;
-  padding: 0 5px;
-  position: relative;
-  z-index: 5;
+h2 span {
+	margin: 0px 10px;
 }
 
 .button {
