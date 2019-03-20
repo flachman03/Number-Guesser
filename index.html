@@ -2,81 +2,100 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="index.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="styles">
   <title>Number Guesser</title>
 </head>
 <body>
   <header>
-  	<h1>NumberGuesser</h1>
-  	<h2>Ultimate Challenger Edition</h2>
+    <h1>NUMBER<span class="title-light">GUESSER</span></h1>
+    <h2>ULTIMATE CHALLENGER EDITION</h2>
   </header>
-  <main>
-  	<section class="left-section">
-  		<div class="set-range-box">
-  			<h5>Set Range</h5>
-  			<form>
-  				<label for="min-range-input">Min Range</label>
-  				<input type="text" name="min-range-input">
-  				<label for="max-range-input">Max Range</label>
-  				<input type="text" name="max-range-input">
-  				<input type="button" name="Update">
-  			</form>
-  		</div>
-  		<div class="guess-box">
-  			<p>The Current Range is <span>0</span> to <span>0</span></p>
-  			<form>
-  				<label for="challenger-one-input">Challenger 1</label>
-  				<label for="challenger-one-input">Name</label>
-  				<input type="text" name="challenger-one-input">
-  				<label for="challenger-one-guess">Guess</label>
-  				<input type="text" name="challenger-one-guess">
-  			</form>
-  			<form>
-  				<label for="challenger-two-input">Challenger 2</label>
-  				<label for="challenger-two-input">Name</label>
-  				<input type="text" name="challenger-two-input">
-  				<label for="challenger-two-guess">Guess</label>
-  				<input type="text" name="challenger-two-guess">
-  			</form>
-  			<form>
-  				<input type="button" name="SUBMIT GUESS">
-  				<input type="button" name="RESET GUESS">
-  				<input type="button" name="CLEAR GAME">
-  			</form>
-  		</div>
-  		<div class="score-box">
-  			<h3>Latest Score</h3>
-  			<div class="challenger-one-score">
-  				<p>Challenger 1 Name</p>
-  				<p>current guess</p>
-  				<p><span>None</span></p>
-  				<p>No Current Guess</p>
-  			</div>
-  			<div class="challenger-two-score">
-  				<p>Challenger 2 Name</p>
-  				<p>Current Guess</p>
-  				<p><span>None</span></p>
-  				<p>No Current Guess</p>
-  			</div>
-  		</div>
-  	</section>
-  	<section class="cards-section">
-  		<div class="cards">
-  			<div class="card-top">
-  				<p><span>Challenger Name</span></p>
-  				<p>VS</p>
-  				<p><span>Challenger Name</span></p>
-  			</div>
-  			<div class="card-middle">
-  				<h3><span>Challenger 1 Name</span></h3>
-  				<h4>Winner</h43>
-  			</div>
-  			<div class="card-bottom">
-  				<p><span></span>Guesses</p>
-  				<p><span></span>Minutes</p>
-  				<button></button>
-  			</div>
-  		</div>
-  	</section>
+  <main class="flex">
+    <section class="main-left flex">
+      <div class="left-1 left-box flex">
+        <h5 class="flex">Set Range</h5>
+        <form class="range-box flex">
+          <div class="min-range flex">
+            <label for="min-range-input">Min Range</label>
+            <input class="input-height" type="text" name="min-range-input">
+          </div>
+          <div class="max-range flex"
+            <label for="max-range-input">Max Range</label>
+            <input class="input-height" type="text" name="max-range-input">
+          </div>
+          <input class="update-button input-height flex button" type="button" name="Update">
+        </form>
+      </div>
+      <div class="left-2 left-box flex">
+        <p>The Current Range is <span>0</span> to <span>0</span></p>
+        <form>
+          <h3>Challenger 1</h3>
+          <div class="forms-flex flex">
+            <div class="chall-name">
+              <label for="challenger-one-input">Name</label>
+              <input class="input-height" type="text" name="challenger-one-input">
+            </div>
+            <div class="chall-guess">
+              <label for="challenger-one-guess">Guess</label>
+              <input class="input-height" type="number" name="challenger-one-guess">
+            </div>
+          </div>
+        </form>
+        <form>
+          <h3>Challenger 2</h3>
+          <div class="forms-flex flex">
+            <div class="chall-name">
+              <label for="challenger-two-input">Name</label>
+              <input class="input-height" type="text" name="challenger-two-input">
+            </div> 
+            <div class="chall-guess"> 
+              <label for="challenger-two-guess">Guess</label>
+              <input class="input-height" type="number" name="challenger-two-guess">
+            </div>
+          </div>
+        </form>
+        <form class="mid-buttons flex">
+          <input class="button middle-buttons input-height" type="button" name="SUBMIT GUESS">
+          <input class="button middle-buttons input-height" type="button" name="RESET GUESS">
+          <input class="button middle-buttons input-height" type="button" name="CLEAR GAME">
+        </form>
+      </div>
+      <div class="left-3 left-box flex">
+        <h3 class="latest-score flex">Latest Score</h3>
+        <div class="number-boxes flex">
+        <div class="challenger-one-score big-number-box flex">
+          <p>Challenger 1 Name</p>
+          <p>current guess</p>
+          <p><span>None</span></p>
+          <p>No Current Guess</p>
+        </div>
+        <div class="challenger-two-score big-number-box flex">
+          <p>Challenger 2 Name</p>
+          <p>Current Guess</p>
+          <p><span>None</span></p>
+          <p>No Current Guess</p>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="main-right flex">
+      <div class="cards flex">
+        <div class="card-top flex">
+          <p><span>CHALLENGER NAME</span></p>
+          <p>VS</p>
+          <p><span>CHALLENGER NAME</span></p>
+        </div>
+        <div class="card-middle flex">
+          <h3><span>CHALLENGER 1 NAME</span></h3>
+          <h4>WINNER</h43>
+        </div>
+        <div class="card-bottom flex">
+          <p><span></span>GUESSES</p>
+          <p><span></span>MINUTES</p>
+          <button></button>
+        </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
