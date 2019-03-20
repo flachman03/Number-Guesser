@@ -15,41 +15,87 @@ var clearButton = document.querySelector('#clear-button');
 var chalOneName = document.querySelectorAll('.chal-one-name');
 var chalTwoName = document.querySelectorAll('.chal-two-name');
 
+
+/----------Starting Conditions-------/
+resetButton.disabled = true;
+clearButton.disabled = true;
+submitButton.disabled = true;
+randomNumber(1, 100);
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
 	rangeFunc();
+	randomNumber(minRange.value, maxRange.value);
+	disableButton(updateButton);
+	enableButton(resetButton);
+	enableButton(clearButton);
+	enableButton(submitButton);
+
 });
 
-// submitButton.addEventListener('click', function() {
-// 	chalNames();
-// });
+submitButton.addEventListener('click', function() {
+	setName(oneNameInput.value, twoNameInput.value);
+	enableButton(resetButton);
+	enableButton(clearButton);
+});
+
+resetButton.addEventListener('click', function(){
+	resetGame();
+	enableButton(updateButton);
+	randomNumber(1, 100);
+});
 
 /----------Functions----------/
-function randomNumber() {
-	var random = Math.ceil(Math.random()*((maxRange.value - minRange.value) + 1) + minRange.value);
-	console.log(random);
+function randomNumber(min, max) {
+	var random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
 	return random;
 };
 
 function rangeFunc() {
 	minSpan.innerText = minRange.value;
 	maxSpan.innerText = maxRange.value;
-	randomNumber();
 };
 
-// function chalNames() {
-// 	for (i = 0; i < chalOneName.length; i++) {
-// 		oneNameInput[i].innerText = chalOneName.value;
-// 		console.log(oneNameInput[i])
-// 	};
+function disableButton(button) {
+	button.disabled = true;
+};
 
-// 	for (i = 0; i < chalTwoName.length; i++) {
-// 		twoNameInput[i].innerText = chalTwoName.value;
-// 	};
-// };
+function enableButton(button) {
+	button.disabled = false;
+};
 
-for (i = 0; i < chalOneName.length; i++) {
-	
+function resetGame() {
+	minRange.value = 1;
+	maxRange.value = 100;
+	oneNameInput.value = '';
+	twoNameInput.value = '';
+	minSpan.innerText = minRange.value;
+	maxSpan.innerText = maxRange.value;
+	setName('Challenger 1','Challenger 2');
+
+};
+
+function setName(one, two) {
+	for (i = 0; i < chalOneName.length; i++) {
+		chalOneName[i].innerText = one;
+		console.log(chalOneName[i]);
+	};
+
+	for (i = 0; i < chalTwoName.length; i++) {
+		chalTwoName[i].innerText = two;
+		console.log(chalTwoName[i]);
+	};
 }
+
+function startGame() {
+	resetButton.disabled = true;
+	clearButton.disabled = true;
+	submitButton.disabled = true;
+	randomNumber(1, 100);
+}
+
+/----------Starting Conditions-------/
+
+startGame();
+
 

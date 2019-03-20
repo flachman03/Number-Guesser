@@ -34,8 +34,40 @@ h2 {
 	font-size: 12pt;
 }
 
+h1:before {
+  content: "";
+  border-top: solid 2px white;
+  width: 70px;
+  height: 1px;
+  position: absolute;
+  top: 150px;
+  z-index: 1;
+}
+
+h1:after {
+  content: "";
+  border-top: solid 2px white;
+  width: 70px;
+  height: 1px;
+  position: absolute;
+  top: 150px;
+  right: 500px;
+  z-index: 1;
+}
+
+.sub-title {
+  background-color: #404041;
+  padding: 0 5px;
+  position: relative;
+  z-index: 5;
+}
+
 .button {
 	border-radius: 20px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #6e6e6e;
+	color: white;
+	font-size: 14pt;
 }
 
 .middle-buttons {
@@ -52,12 +84,13 @@ h2 {
 	justify-content: space-around;
 	flex-direction: column;
 	background-color: #f7f7f7;
+	color: #404041;
 }
 
 .left-box {
     margin: 10px;
     background-color: white;
-    border: solid lightgray;
+    border: solid #e8e8e8 2px;
 }
 
 h5 {
@@ -67,6 +100,7 @@ h5 {
 
 label {
 	display: block;
+	color: #6e6e6e;
 }
 
 input {
@@ -101,11 +135,12 @@ input {
 }
 
 .input-height {
-	padding: 10px;
+	padding: 7px;
 }
 
 .left-2 {
 	flex-direction: column;
+	padding: 15px;
 }
 
 .left-3 {
@@ -118,14 +153,16 @@ input {
 
 .forms-flex {
 	flex-direction: row;
+	justify-content: space-between;
 }
 
 .chall-name {
-	flex: 5;
+	width: 350px;
 }
 
 .chall-guess {
-	flex: 2;
+	width: 30%;
+	padding-right: 30px;
 }
 
 .big-number-box {
@@ -152,11 +189,13 @@ input {
 
 .cards {
 	width: 70%;
-	border: solid black;
+	border: solid #c7c7c7 2px;
 	flex-direction: column;
-	height: 200px;
+	height: 250px;
 	width: 600px;
 	margin: 10px 30px;
+	color: #6e6e6e;
+	background-color: white;
 }
 
 .card-top, .card-bottom {
@@ -165,6 +204,6 @@ input {
 }
 
 .card-middle {
-	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+
