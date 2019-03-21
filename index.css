@@ -163,6 +163,18 @@ input {
 	width: 100%;
 }
 
+.big-number-1 {
+	color: #dd1972;
+	font-size: 70pt;
+	font-weight: 700;
+}
+
+.big-number-2 {
+	color: #dd1972;
+	font-size: 70pt;
+	font-weight: 700;
+}
+
 .latest-score {
 	width: 100%;
 	margin: 0;
