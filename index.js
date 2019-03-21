@@ -20,15 +20,14 @@ var feedback1 = document.querySelector('.guess-feedback-1');
 var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
+var rangeBox = document.querySelector('.range-box');
 
-/----------Starting Conditions-------/
-resetButton.disabled = true;
-clearButton.disabled = true;
-submitButton.disabled = true;
+minRange.value = 1;
+maxRange.value = 100;
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
-	rangeFunc();
+	rangeCheck();
 	randomNumber(minRange.value, maxRange.value);
 	disableButton(updateButton);
 	enableButton(resetButton);
@@ -38,12 +37,14 @@ updateButton.addEventListener('click', function() {
 });
 
 submitButton.addEventListener('click', function() {
-	// setName(oneNameInput.value, twoNameInput.value);
+	setName(oneNameInput.value, twoNameInput.value);
 	enableButton(resetButton);
 	enableButton(clearButton);
 	bigNumber1.innerText = chalOneGuess.value;
 	bigNumber2.innerText = chalTwoGuess.value;
-	numberCheck(chalOneGuess.value, chalTwoGuess.value);
+	// numberCheck(chalOneGuess.value, chalTwoGuess.value);
+	guessCheck();
+
 });
 
 resetButton.addEventListener('click', function(){
@@ -60,7 +61,6 @@ clearButton.addEventListener('click', function() {
 function randomNumber(min, max) {
 	random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
 	console.log(random);
-	// return random;
 };
 
 function rangeFunc() {
@@ -97,9 +97,6 @@ function clearGame() {
 function setName(one, two) {
 	for (i = 0; i < chalOneName.length; i++) {
 		chalOneName[i].innerText = one;
-	};
-
-	for (i = 0; i < chalTwoName.length; i++) {
 		chalTwoName[i].innerText = two;
 	};
 };
@@ -110,7 +107,7 @@ function numberCheck(one, two) {
 	} else if (one == random) {
 		feedback1.innerText = "BOOM!"
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
-
+		changeRange();
 	} else {
 		feedback1.innerText = "that's too low"
 	}
@@ -149,8 +146,35 @@ function createCard(one, two, three) {
 function startGame() {
 	resetButton.disabled = true;
 	clearButton.disabled = true;
-	submitButton.disabled = true;
 	randomNumber(1, 100);
+};
+
+function rangeCheck() {
+	var rangeBox = document.querySelector('.range-box');
+	if (minRange.value < maxRange.value) {
+		rangeFunc(); 
+	} else {
+		rangeBox.insertAdjacentHTML('afterend', '<h5>Error</h5>');
+	}
+};
+
+function guessCheck() {
+	var guessBox = document.querySelector('.forms-flex');
+	if ((maxRange.value < chalOneGuess.value) || (minRange.value > chalOneGuess.value)) {
+		guessBox.insertAdjacentHTML('afterend', '<h5>Error</5>');
+	} else {
+		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+	};
+};
+
+function changeRange() {
+	maxRange.value = parseInt(maxRange.value) + 10;
+	if (minRange.value > 10) {
+		minRange.value = minRange.value - 10} 
+		else {minRange.value = 0;
+		}
+	randomNumber(minRange.value, maxRange.value);
+	rangeFunc();
 };
 
 /----------Starting Conditions-------/
