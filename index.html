@@ -23,7 +23,7 @@
             <label for="max-range-input">Max Range</label>
             <input class="input-height" id="max-range" type="text" name="max-range-input">
           </div>
-          <input class="update-button input-height flex button" id="update-button" type="button" name="Update">
+          <input class="update-button input-height flex button" id="update-button" type="button" name="Update" value="UPDATE">
         </form>
       </div>
       <div class="left-2 left-box flex">
@@ -37,7 +37,7 @@
             </div>
             <div class="chall-guess">
               <label for="challenger-one-guess">Guess</label>
-              <input class="input-height" id="one-guess"type="number" name="challenger-one-guess">
+              <input class="input-height guess-return" id="one-guess"type="number" name="challenger-one-guess">
             </div>
           </div>
         </form>
@@ -50,14 +50,14 @@
             </div> 
             <div class="chall-guess"> 
               <label for="challenger-two-guess">Guess</label>
-              <input class="input-height" id="two-guess" type="number" name="challenger-two-guess">
+              <input class="input-height guess-return" id="two-guess" type="number" name="challenger-two-guess">
             </div>
           </div>
         </form>
         <form class="mid-buttons flex">
-          <input class="button middle-buttons input-height" id="submit-button" type="button" name="SUBMIT GUESS">
-          <input class="button middle-buttons input-height" id="reset-button" type="button" name="RESET GUESS">
-          <input class="button middle-buttons input-height" id="clear-button" type="button" name="CLEAR GAME">
+          <input class="button middle-buttons input-height" id="submit-button" type="button" name="SUBMIT GUESS" value="SUBMIT GUESS">
+          <input class="button middle-buttons input-height" id="reset-button" type="button" name="RESET GAME" value="RESET GAME">
+          <input class="button middle-buttons input-height" id="clear-button" type="button" name="CLEAR GAME" value="CLEAR GAME">
         </form>
       </div>
       <div class="left-3 left-box flex">
@@ -66,14 +66,14 @@
         <div class="challenger-one-score big-number-box flex">
           <p><span class="chal-one-name">Challenger 1 Name</span></p>
           <p>current guess</p>
-          <p><span>None</span></p>
-          <p>No Current Guess</p>
+          <p><span class="big-number big-number-1">None</span></p>
+          <p class="guess-feedback-1">No Current Guess</p>
         </div>
         <div class="challenger-two-score big-number-box flex">
           <p><span class="chal-two-name">Challenger 2 Name</span></p>
           <p>Current Guess</p>
-          <p><span>None</span></p>
-          <p>No Current Guess</p>
+          <p><span class="big-number big-number-2">None</span></p>
+          <p class="guess-feedback-2">No Current Guess</p>
         </div>
       </div>
       </div>

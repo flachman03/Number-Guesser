@@ -14,7 +14,11 @@ var resetButton = document.querySelector('#reset-button');
 var clearButton = document.querySelector('#clear-button');
 var chalOneName = document.querySelectorAll('.chal-one-name');
 var chalTwoName = document.querySelectorAll('.chal-two-name');
-
+var bigNumber1 = document.querySelector('.big-number-1');
+var bigNumber2 = document.querySelector('.big-number-2');
+var feedback1 = document.querySelector('.guess-feedback-1');
+var feedback2 = document.querySelector('.guess-feedback-2');
+var random = "";
 
 /----------Starting Conditions-------/
 resetButton.disabled = true;
@@ -37,12 +41,19 @@ submitButton.addEventListener('click', function() {
 	setName(oneNameInput.value, twoNameInput.value);
 	enableButton(resetButton);
 	enableButton(clearButton);
+	bigNumber1.innerText = chalOneGuess.value;
+	bigNumber2.innerText = chalTwoGuess.value;
+	numberCheck(chalOneGuess.value, chalTwoGuess.value);
 });
 
 resetButton.addEventListener('click', function(){
 	resetGame();
 	enableButton(updateButton);
 	randomNumber(1, 100);
+});
+
+clearButton.addEventListener('click', function() {
+	clearGame();
 });
 
 /----------Functions----------/
@@ -75,6 +86,13 @@ function resetGame() {
 
 };
 
+function clearGame() {
+	oneNameInput.value = '';
+	twoNameInput.value = '';
+	chalOneGuess.value = '';
+	chalTwoGuess.value = '';
+};
+
 function setName(one, two) {
 	for (i = 0; i < chalOneName.length; i++) {
 		chalOneName[i].innerText = one;
@@ -85,17 +103,31 @@ function setName(one, two) {
 		chalTwoName[i].innerText = two;
 		console.log(chalTwoName[i]);
 	};
-}
+};
+
+function numberCheck(one, two) {
+	if (one > random) {
+		feedback1.innerText = "that's too high"
+	} else {
+		feedback1.innerText = "that's too low"
+	}
+
+	if (two > random) {
+		feedback2.innerText = "that's too high"
+	} else {
+		feedback2.innerText = "that's too low"
+	}
+};
+
 
 function startGame() {
 	resetButton.disabled = true;
 	clearButton.disabled = true;
 	submitButton.disabled = true;
 	randomNumber(1, 100);
-}
+};
 
 /----------Starting Conditions-------/
 
 startGame();
-
 
