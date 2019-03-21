@@ -86,6 +86,11 @@ h5 {
 	margin: 0;
 }
 
+.corner-title {
+	font-size: 13pt;
+	font-weight: bold;
+}
+
 label {
 	display: block;
 	color: #6e6e6e;
@@ -124,6 +129,9 @@ input {
 
 .input-height {
 	padding: 7px;
+}
+
+.text-box {
 	border: #e8e8e8 2px solid;
 }
 
@@ -162,23 +170,25 @@ input {
 
 .number-boxes {
 	width: 100%;
+	padding: 20px 0px 20px 0;
 }
 
 .number-boxes p {
 	margin: 0;
 	color: #6e6e6e;
+	width: 100%;
 }
 
 .big-number-1 {
 	color: #dd1972;
 	font-size: 70pt;
-	font-weight: 700;
+	font-weight: 800;
 }
 
 .big-number-2 {
 	color: #dd1972;
 	font-size: 70pt;
-	font-weight: 700;
+	font-weight: 800;
 }
 
 .latest-score {
@@ -189,6 +199,13 @@ input {
 
 .chal-one-name, .chal-two-name {
 	color: #6e6e6e;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.big-number-box p {
+	font-size: 14pt;
+	font-weight: 300;
 }
 
 #span-min, #span-max {
@@ -214,10 +231,6 @@ input {
 	background-color: white;
 }
 
-/*#hidden-card {
-	display: none;
-}*/
-
 .card-top, .card-bottom {
 	flex-direction: row;
 	justify-content: space-around;
@@ -227,3 +240,7 @@ input {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+/*.error {
+	color: #dd1972;
+}*/

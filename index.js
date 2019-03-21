@@ -21,10 +21,7 @@ var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 
-/----------Starting Conditions-------/
-resetButton.disabled = true;
-clearButton.disabled = true;
-submitButton.disabled = true;
+
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
@@ -38,12 +35,11 @@ updateButton.addEventListener('click', function() {
 });
 
 submitButton.addEventListener('click', function() {
-	// setName(oneNameInput.value, twoNameInput.value);
 	enableButton(resetButton);
 	enableButton(clearButton);
 	bigNumber1.innerText = chalOneGuess.value;
 	bigNumber2.innerText = chalTwoGuess.value;
-	numberCheck(chalOneGuess.value, chalTwoGuess.value);
+	errorNoValue();
 });
 
 resetButton.addEventListener('click', function(){
@@ -60,7 +56,6 @@ clearButton.addEventListener('click', function() {
 function randomNumber(min, max) {
 	random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
 	console.log(random);
-	// return random;
 };
 
 function rangeFunc() {
@@ -143,6 +138,20 @@ function createCard(one, two, three) {
           <button></button>
         </div>
       </div>`;
+}
+
+function errorNoValue() {
+	var guessForm = document.querySelector('.guess-1-form');
+	var guessBox = document.querySelector('#one-guess')
+	if (chalOneGuess.value == "") {
+		guessForm.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		guessBox.style.cssText = "border-color: #dd1972;"
+	} else {
+		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+		var errorRemove = document.querySelector('.error');
+		errorRemove.remove();
+		guessBox.style.cssText = "border-color: #e8e8e8;"
+	}
 }
 
 
