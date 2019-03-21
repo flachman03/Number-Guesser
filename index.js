@@ -18,13 +18,12 @@ var bigNumber1 = document.querySelector('.big-number-1');
 var bigNumber2 = document.querySelector('.big-number-2');
 var feedback1 = document.querySelector('.guess-feedback-1');
 var feedback2 = document.querySelector('.guess-feedback-2');
-var random = "";
+var random = parseInt("");
 
 /----------Starting Conditions-------/
 resetButton.disabled = true;
 clearButton.disabled = true;
 submitButton.disabled = true;
-randomNumber(1, 100);
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
@@ -58,7 +57,8 @@ clearButton.addEventListener('click', function() {
 
 /----------Functions----------/
 function randomNumber(min, max) {
-	var random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
+	random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
+	console.log(random);
 	return random;
 };
 
@@ -108,12 +108,16 @@ function setName(one, two) {
 function numberCheck(one, two) {
 	if (one > random) {
 		feedback1.innerText = "that's too high"
+	} else if (one == random) {
+		feedback1.innerText = "Winner!!"
 	} else {
 		feedback1.innerText = "that's too low"
 	}
 
 	if (two > random) {
 		feedback2.innerText = "that's too high"
+	} else if (two == random) {
+		feedback2.innerText = "Winner!!"
 	} else {
 		feedback2.innerText = "that's too low"
 	}
