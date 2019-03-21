@@ -19,6 +19,7 @@ var bigNumber2 = document.querySelector('.big-number-2');
 var feedback1 = document.querySelector('.guess-feedback-1');
 var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
+var mainRight = document.querySelector('.main-right');
 
 /----------Starting Conditions-------/
 resetButton.disabled = true;
@@ -37,7 +38,7 @@ updateButton.addEventListener('click', function() {
 });
 
 submitButton.addEventListener('click', function() {
-	setName(oneNameInput.value, twoNameInput.value);
+	// setName(oneNameInput.value, twoNameInput.value);
 	enableButton(resetButton);
 	enableButton(clearButton);
 	bigNumber1.innerText = chalOneGuess.value;
@@ -59,7 +60,7 @@ clearButton.addEventListener('click', function() {
 function randomNumber(min, max) {
 	random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
 	console.log(random);
-	return random;
+	// return random;
 };
 
 function rangeFunc() {
@@ -96,12 +97,10 @@ function clearGame() {
 function setName(one, two) {
 	for (i = 0; i < chalOneName.length; i++) {
 		chalOneName[i].innerText = one;
-		console.log(chalOneName[i]);
 	};
 
 	for (i = 0; i < chalTwoName.length; i++) {
 		chalTwoName[i].innerText = two;
-		console.log(chalTwoName[i]);
 	};
 };
 
@@ -109,7 +108,9 @@ function numberCheck(one, two) {
 	if (one > random) {
 		feedback1.innerText = "that's too high"
 	} else if (one == random) {
-		feedback1.innerText = "Winner!!"
+		feedback1.innerText = "BOOM!"
+		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
+
 	} else {
 		feedback1.innerText = "that's too low"
 	}
@@ -117,11 +118,32 @@ function numberCheck(one, two) {
 	if (two > random) {
 		feedback2.innerText = "that's too high"
 	} else if (two == random) {
-		feedback2.innerText = "Winner!!"
+		feedback2.innerText = "BOOM!";
+		createCard(oneNameInput.value, twoNameInput.value, twoNameInput.value);
 	} else {
 		feedback2.innerText = "that's too low"
 	}
 };
+
+function createCard(one, two, three) {
+	mainRight.innerHTML = `
+		<div class="cards flex">
+        <div class="card-top flex">
+          <p><span class="chal-one-name">${chalOneName.innerText = one}</span></p>
+          <p>VS</p>
+          <p><span class="chal-two-name">${chalTwoName.innerText = two}</span></p>
+        </div>
+        <div class="card-middle flex">
+          <h3><span>${chalTwoName.innerText = three}</span></h3>
+          <h4>WINNER</h43>
+        </div>
+        <div class="card-bottom flex">
+          <p><span></span>GUESSES</p>
+          <p><span></span>MINUTES</p>
+          <button></button>
+        </div>
+      </div>`;
+}
 
 
 function startGame() {
