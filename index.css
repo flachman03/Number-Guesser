@@ -124,6 +124,7 @@ input {
 
 .input-height {
 	padding: 7px;
+	border: #e8e8e8 2px solid;
 }
 
 .left-2 {
@@ -163,6 +164,11 @@ input {
 	width: 100%;
 }
 
+.number-boxes p {
+	margin: 0;
+	color: #6e6e6e;
+}
+
 .big-number-1 {
 	color: #dd1972;
 	font-size: 70pt;
@@ -178,8 +184,18 @@ input {
 .latest-score {
 	width: 100%;
 	margin: 0;
+	color: #6e6e6e;
 }
 
+.chal-one-name, .chal-two-name {
+	color: #6e6e6e;
+}
+
+#span-min, #span-max {
+	color: #6e6e6e;
+	text-decoration: underline;
+	font-weight: 700;
+}
 .main-right {
 	padding: 10px;
 	width: 50%;
@@ -197,6 +213,10 @@ input {
 	color: #6e6e6e;
 	background-color: white;
 }
+
+/*#hidden-card {
+	display: none;
+}*/
 
 .card-top, .card-bottom {
 	flex-direction: row;
