@@ -22,8 +22,10 @@ var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
 
+
 minRange.value = 1;
 maxRange.value = 100;
+
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
@@ -42,9 +44,8 @@ submitButton.addEventListener('click', function() {
 	enableButton(clearButton);
 	bigNumber1.innerText = chalOneGuess.value;
 	bigNumber2.innerText = chalTwoGuess.value;
-	// numberCheck(chalOneGuess.value, chalTwoGuess.value);
+	errorNoValue();
 	guessCheck();
-
 });
 
 resetButton.addEventListener('click', function(){
@@ -140,6 +141,20 @@ function createCard(one, two, three) {
           <button></button>
         </div>
       </div>`;
+}
+
+function errorNoValue() {
+	var guessForm = document.querySelector('.guess-1-form');
+	var guessBox = document.querySelector('#one-guess')
+	if (chalOneGuess.value == "") {
+		guessForm.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		guessBox.style.cssText = "border-color: #dd1972;"
+	} else {
+		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+		var errorRemove = document.querySelector('.error');
+		errorRemove.remove();
+		guessBox.style.cssText = "border-color: #e8e8e8;"
+	}
 }
 
 
