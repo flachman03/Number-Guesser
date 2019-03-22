@@ -22,10 +22,6 @@ var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
 
-
-minRange.value = 1;
-maxRange.value = 100;
-
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
