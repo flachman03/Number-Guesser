@@ -21,6 +21,7 @@ var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
+var guessCount = 0;
 
 /----------Event Listeners----------/
 
@@ -47,7 +48,6 @@ submitButton.addEventListener('click', function() {
 resetButton.addEventListener('click', function(){
 	resetGame();
 	enableButton(updateButton);
-	randomNumber(1, 100);
 });
 
 clearButton.addEventListener('click', function() {
@@ -74,13 +74,10 @@ function enableButton(button) {
 };
 
 function resetGame() {
-	minRange.value = 1;
-	maxRange.value = 100;
-	oneNameInput.value = '';
-	twoNameInput.value = '';
-	minSpan.innerText = minRange.value;
-	maxSpan.innerText = maxRange.value;
+	startGame();
+	rangeFunc();
 	setName('Challenger 1','Challenger 2');
+	clearGame();
 
 };
 
@@ -101,12 +98,15 @@ function setName(one, two) {
 function numberCheck(one, two) {
 	if (one > random) {
 		feedback1.innerText = "that's too high"
+		guessCount = guessCount + 1;
 	} else if (one == random) {
 		feedback1.innerText = "BOOM!"
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
 		changeRange();
+		guessCount = guessCount + 1;
 	} else {
 		feedback1.innerText = "that's too low"
+		guessCount = guessCount + 1;
 	}
 
 	if (two > random) {
@@ -132,7 +132,7 @@ function createCard(one, two, three) {
           <h4>WINNER</h43>
         </div>
         <div class="card-bottom flex">
-          <p><span></span>GUESSES</p>
+          <p><span>${guessCount}</span>GUESSES</p>
           <p><span></span>MINUTES</p>
           <button></button>
         </div>
@@ -157,6 +157,8 @@ function errorNoValue() {
 function startGame() {
 	resetButton.disabled = true;
 	clearButton.disabled = true;
+	minRange.value = 1;
+	maxRange.value = 100;
 	randomNumber(1, 100);
 };
 
