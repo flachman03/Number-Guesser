@@ -22,6 +22,7 @@ var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
 var closeButton = document.querySelector('#card-close-button');
+var mainRight = document.querySelector('.main-right');
 
 
 minRange.value = 1;
@@ -60,6 +61,11 @@ clearButton.addEventListener('click', function() {
 	clearGame();
 });
 
+mainRight.addEventListener('click', function(event) {
+	if (event.target.className === 'card-close-button') {
+		event.target.parentNode.parentNode.remove();
+	}
+});
 
 /----------Functions----------/
 function randomNumber(min, max) {
@@ -113,24 +119,23 @@ function numberCheck(one, two) {
 	} else if (one == random) {
 		feedback1.innerText = "BOOM!";		
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
-		changeRange();
 	} else {
 		feedback1.innerText = "that's too low"
-	}
+	};
+
 	if (two > random) {
 		feedback2.innerText = "that's too high"
 	} else if (two == random) {
 		feedback2.innerText = "BOOM!";
 		createCard(oneNameInput.value, twoNameInput.value, twoNameInput.value);
-		changeRange();
 	} else {
 		feedback2.innerText = "that's too low"
-	}
+	};
 };
 
 function createCard(one, two, three) {
 	mainRight.innerHTML = `
-		<div class="cards flex">
+	  <div class="cards flex">
         <div class="card-top flex">
           <p><span class="chal-one-name">${chalOneName.innerText = one}</span></p>
           <p>VS</p>
@@ -143,13 +148,11 @@ function createCard(one, two, three) {
         <div class="card-bottom flex">
           <p><span></span>GUESSES</p>
           <p><span></span>MINUTES</p>
-          <button id="card-close-button"><img src="images/close-icon.png"></button>
+          <button style="border-radius: 30px 30px; height: 20px; background-color: #6e6e6e; color: white;" class="card-close-button" id="card-close-button">
+          	&times;         	
+          </button>
         </div>
       </div>`;
-    closeButton.addEventListener('click', function() {
-    	var card = document.querySelector('.cards');
-    	card.style.cssText = "display: none;";
-    });
 };
 
 function updateErrors() {
@@ -250,7 +253,7 @@ function rangeCheck() {
 
 function guessCheck() {
 	var guessBox = document.querySelector('.forms-flex');
-	if ((maxRange.value < chalOneGuess.value) || (minRange.value > chalOneGuess.value)) {
+	if ((chalOneGuess.value > maxRange.value) || (chalOneGuess.value < minRange.value)) {
 		guessBox.insertAdjacentHTML('afterend', '<h5>Error</5>');
 	} else {
 		numberCheck(chalOneGuess.value, chalTwoGuess.value);
