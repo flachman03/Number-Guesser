@@ -30,6 +30,7 @@ maxRange.value = 100;
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
+	updateErrors();
 	rangeCheck();
 	randomNumber(minRange.value, maxRange.value);
 	disableButton(updateButton);
@@ -44,7 +45,8 @@ submitButton.addEventListener('click', function() {
 	enableButton(clearButton);
 	bigNumber1.innerText = chalOneGuess.value;
 	bigNumber2.innerText = chalTwoGuess.value;
-	errorNoValue();
+	chalOneErrors();
+	// chalOneNaN();
 	guessCheck();
 });
 
@@ -72,21 +74,22 @@ function rangeFunc() {
 
 function disableButton(button) {
 	button.disabled = true;
+	buttonStyle(button);
 };
 
 function enableButton(button) {
 	button.disabled = false;
+	buttonStyle(button);
 };
 
 function resetGame() {
 	minRange.value = 1;
 	maxRange.value = 100;
-	oneNameInput.value = '';
-	twoNameInput.value = '';
+	clearGame();
 	minSpan.innerText = minRange.value;
 	maxSpan.innerText = maxRange.value;
 	setName('Challenger 1','Challenger 2');
-
+	enableButton(updateButton);
 };
 
 function clearGame() {
@@ -94,6 +97,7 @@ function clearGame() {
 	twoNameInput.value = '';
 	chalOneGuess.value = '';
 	chalTwoGuess.value = '';
+	startGame();
 };
 
 function setName(one, two) {
@@ -148,14 +152,29 @@ function createCard(one, two, three) {
     });
 };
 
-/-------------Working on function-----------/
+function updateErrors() {
+	var updateMessage = document.querySelector('.range-box');
+	var minBox = document.querySelector('#min-range');
+	var maxBox = document.querySelector('#max-range');
 
+	if (minBox.value == "") {
+		updateMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		minBox.style.cssText = "border-color: #dd1972;";
+	} else if (maxBox.value == "") {
+		updateMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		maxBox.style.cssText = "border-color: #dd1972;";
+	} else {
+		// errorRemove.remove();
+		minBox.style.cssText = "border-color: #e8e8e8;";
+		maxBox.style.cssText = "border-color: #e8e8e8;";
+	};
+};
 
-function errorNoValue() {
+function chalOneErrors() {
 	var guessMessage = document.querySelector('.guess-1-form');
 	var guessBox1 = document.querySelector('#one-guess');
 	var nameBox1 = document.querySelector('#one-input');
-	// var errorRemove = document.querySelector('.error');
+
 	if (chalOneGuess.value == "") {
 		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
 		guessBox1.style.cssText = "border-color: #dd1972;";
@@ -165,13 +184,58 @@ function errorNoValue() {
 	} else {
 		// errorRemove.remove();
 		guessBox1.style.cssText = "border-color: #e8e8e8;";
+		chalTwoErrors();
 		numberCheck(chalOneGuess.value, chalTwoGuess.value);
-	}
+	};
 };
 
+function chalTwoErrors() {
+	var guessMessage2 = document.querySelector('.guess-2-form');
+	var guessBox2 = document.querySelector('#two-guess');
+	var nameBox2 = document.querySelector('#two-input');
+
+	if (chalTwoGuess.value == "") {
+		guessMessage2.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		guessBox2.style.cssText = "border-color: #dd1972;";
+	} else if (twoNameInput.value == "") {
+		guessMessage2.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		nameBox2.style.cssText = "border-color: #dd1972;";
+	} else {
+		// errorRemove.remove();
+		guessBox2.style.cssText = "border-color: #e8e8e8;";
+		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+	};
+};
+
+// function chalOneNaN() {
+// 	var guessMessage = document.querySelector('.guess-1-form');
+// 	var guessBox1 = document.querySelector('#one-guess');
+
+// 	if (chalOneGuess.value == "NaN") {
+// 		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">Not a number</h5>');
+// 	} else {
+// 		chalTwoNan();
+// 	};
+// };
+
+// function chalTwoNaN(); {
+//     var guessMessage = document.querySelector('.guess-1-form');
+// 	var guessBox1 = document.querySelector('#one-guess');
+
+// 	if (chalOneGuess.value == "NaN") {
+// 		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">Not a number</h5>');
+// 	} else {
+// 		numberCheck();
+// 	};
+// };
+
+
+/-------------Working on function-----------/
+
+
 function startGame() {
-	resetButton.disabled = true;
-	clearButton.disabled = true;
+	disableButton(resetButton);
+	disableButton(clearButton);
 	randomNumber(1, 100);
 };
 
@@ -203,7 +267,14 @@ function changeRange() {
 	rangeFunc();
 };
 
+function buttonStyle(button) {
+	if (button.disabled === true) {
+		button.style.cssText = "background-color: #d0d2d3;";
+	} else {
+		button.style.cssText = "background-color: #6e6e6e;"
+	};
+};
+
 /----------Starting Conditions-------/
 
 startGame();
-
