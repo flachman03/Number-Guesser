@@ -47,7 +47,6 @@ submitButton.addEventListener('click', function() {
 	bigNumber1.innerText = chalOneGuess.value;
 	bigNumber2.innerText = chalTwoGuess.value;
 	chalOneErrors();
-	// chalOneNaN();
 	guessCheck();
 });
 
