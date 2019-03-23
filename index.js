@@ -21,6 +21,7 @@ var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
+var closeButton = document.querySelector('#card-close-button');
 
 
 minRange.value = 1;
@@ -35,7 +36,6 @@ updateButton.addEventListener('click', function() {
 	enableButton(resetButton);
 	enableButton(clearButton);
 	enableButton(submitButton);
-
 });
 
 submitButton.addEventListener('click', function() {
@@ -57,6 +57,7 @@ resetButton.addEventListener('click', function(){
 clearButton.addEventListener('click', function() {
 	clearGame();
 });
+
 
 /----------Functions----------/
 function randomNumber(min, max) {
@@ -106,18 +107,18 @@ function numberCheck(one, two) {
 	if (one > random) {
 		feedback1.innerText = "that's too high"
 	} else if (one == random) {
-		feedback1.innerText = "BOOM!"
+		feedback1.innerText = "BOOM!";		
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
 		changeRange();
 	} else {
 		feedback1.innerText = "that's too low"
 	}
-
 	if (two > random) {
 		feedback2.innerText = "that's too high"
 	} else if (two == random) {
 		feedback2.innerText = "BOOM!";
 		createCard(oneNameInput.value, twoNameInput.value, twoNameInput.value);
+		changeRange();
 	} else {
 		feedback2.innerText = "that's too low"
 	}
@@ -138,25 +139,35 @@ function createCard(one, two, three) {
         <div class="card-bottom flex">
           <p><span></span>GUESSES</p>
           <p><span></span>MINUTES</p>
-          <button></button>
+          <button id="card-close-button"><img src="images/close-icon.png"></button>
         </div>
       </div>`;
-}
+    closeButton.addEventListener('click', function() {
+    	var card = document.querySelector('.cards');
+    	card.style.cssText = "display: none;";
+    });
+};
+
+/-------------Working on function-----------/
+
 
 function errorNoValue() {
-	var guessForm = document.querySelector('.guess-1-form');
-	var guessBox = document.querySelector('#one-guess')
+	var guessMessage = document.querySelector('.guess-1-form');
+	var guessBox1 = document.querySelector('#one-guess');
+	var nameBox1 = document.querySelector('#one-input');
+	// var errorRemove = document.querySelector('.error');
 	if (chalOneGuess.value == "") {
-		guessForm.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		guessBox.style.cssText = "border-color: #dd1972;"
+		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		guessBox1.style.cssText = "border-color: #dd1972;";
+	} else if (oneNameInput.value == "") {
+		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
+		nameBox1.style.cssText = "border-color: #dd1972;";
 	} else {
+		// errorRemove.remove();
+		guessBox1.style.cssText = "border-color: #e8e8e8;";
 		numberCheck(chalOneGuess.value, chalTwoGuess.value);
-		var errorRemove = document.querySelector('.error');
-		errorRemove.remove();
-		guessBox.style.cssText = "border-color: #e8e8e8;"
 	}
-}
-
+};
 
 function startGame() {
 	resetButton.disabled = true;

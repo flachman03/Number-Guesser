@@ -11,17 +11,21 @@ main {
 	justify-content: space-between;
 }
 
+body {
+	margin: 0;
+}
+
 header {
 	text-align: center;
 	background-color: #404041;
-	padding: 8px;
+	padding: 15px;
 }
 
 h1 {
 	color: #dd1972;
 	font-weight: 700;
 	font-size: 38pt;
-	/*margin: -8px;*/
+	margin: 0px;
 }
 
 .title-light {
@@ -40,7 +44,7 @@ h2::after {
   display: block;
   content: "";
   border-top: solid 2px white;
-  width: 100px;
+  width: 89px;
   height: 1px;
   z-index: 1;
   align-self: center;
@@ -49,13 +53,20 @@ h2::after {
 h2 span {
 	margin: 0px 10px;
 }
+.sub-title {
+	margin-top: 1px;
+}
 
 .button {
 	border-radius: 20px;
 	font-family: 'Open Sans', sans-serif;
 	background-color: #6e6e6e;
 	color: white;
-	font-size: 14pt;
+	font-size: 13pt;
+}
+
+button {
+	visibility: : hidden;
 }
 
 .middle-buttons {
@@ -89,6 +100,8 @@ h5 {
 .corner-title {
 	font-size: 13pt;
 	font-weight: bold;
+	margin-bottom: 6px;
+	margin-left: 2.2%;
 }
 
 label {
@@ -125,10 +138,11 @@ input {
 .update-button {
 	width: 20%;
 	align-self: flex-end;
+	justify-content: center;
 }
 
 .input-height {
-	padding: 7px;
+	padding: 5px;
 }
 
 .text-box {
@@ -138,6 +152,10 @@ input {
 .left-2 {
 	flex-direction: column;
 	padding: 15px;
+}
+
+.left-2 p {
+	margin: 0;
 }
 
 .left-3 {
@@ -240,7 +258,3 @@ input {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-/*.error {
-	color: #dd1972;
-}*/
