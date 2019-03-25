@@ -259,3 +259,28 @@ input {
 	justify-content: center;
 	align-items: center;
 }
+
+@media screen and (max-width: 30em) {
+	main,
+	.range-box,
+	.forms-flex,
+	.mid-buttons,
+	.number-boxes, {
+		flex-direction: column;
+	}
+	.main-left {
+		width: 100%;
+	}
+	.main-right {
+		width: 100%;
+	}
+
+	.update-button {
+		align-self:flex-start;
+	}
+
+	.challenger-one-score {
+		margin-bottom: 10px;
+		border-bottom: 1px solid grey;
+	}
+}

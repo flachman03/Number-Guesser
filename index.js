@@ -21,13 +21,11 @@ var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
+var guessCount = 0;
 
 var closeButton = document.querySelector('#card-close-button');
 var mainRight = document.querySelector('.main-right');
 
-
-minRange.value = 1;
-maxRange.value = 100;
 
 /----------Event Listeners----------/
 
@@ -89,7 +87,7 @@ function enableButton(button) {
 
 function resetGame() {
 	startGame();
-	rangeFunc();
+	changeRange();
 	setName('Challenger 1','Challenger 2');
 	clearGame();
 	enableButton(updateButton);
@@ -114,7 +112,6 @@ function setName(one, two) {
 function numberCheck(one, two) {
 	if (one > random) {
 		feedback1.innerText = "that's too high"
-		guessCount = guessCount + 1;
 	} else if (one == random) {
 		feedback1.innerText = "BOOM!";		
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
@@ -256,6 +253,7 @@ function guessCheck() {
 		guessBox.insertAdjacentHTML('afterend', '<h5>Error</5>');
 	} else {
 		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+		guessCount += 2;
 	};
 };
 
@@ -276,6 +274,40 @@ function buttonStyle(button) {
 		button.style.cssText = "background-color: #6e6e6e;"
 	};
 };
+
+
+/-----------Konami Code--------------/
+var konamiKeys = {
+	37: 'left',
+	38: 'up',
+	39: 'right',
+	40: 'down',
+	65: 'a',
+	66: 'b',
+}
+
+var myKonamiCode = ['up','up','down','down','left','right','left','right','b','a'];
+var konamiPosition = 0;
+
+document.addEventListener('keydown', function(e) {
+	var key = konamiKeys[e.keyCode];
+	console.log(key)
+	var requiredKey = myKonamiCode[konamiPosition];
+	console.log(requiredKey)
+	console.log(konamiPosition)
+	if (key == requiredKey) {
+		konamiPosition++;
+		} else {
+			konamiPosition = 0;
+		};
+	if (konamiPosition == myKonamiCode.length) {
+		activateCheats();
+		};
+	});
+function activateCheats() {
+	alert('cheats activated');
+};
+
 
 /----------Starting Conditions-------/
 
