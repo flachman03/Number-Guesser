@@ -261,26 +261,47 @@ input {
 }
 
 @media screen and (max-width: 30em) {
-	main,
-	.range-box,
-	.forms-flex,
-	.mid-buttons,
-	.number-boxes, {
+	main, 
+	.range-box, 
+	.forms-flex, 
+	.mid-buttons, 
+	.number-boxes {
 		flex-direction: column;
 	}
-	.main-left {
-		width: 100%;
-	}
+	.main-left,
 	.main-right {
 		width: 100%;
 	}
-
+	.chall-guess,
+	.chall-name,
+	.min-range,
+	.max-range {
+		width: 95%;
+	}
 	.update-button {
 		align-self:flex-start;
 	}
 
 	.challenger-one-score {
 		margin-bottom: 10px;
-		border-bottom: 1px solid grey;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #d0d2d3;
 	}
-}
+	.update-button{
+		margin-top: 10px;
+	}
+	.middle-buttons {
+		width: 100%;
+		margin-bottom: 8px;
+	}
+	.number-boxes {
+		margin-right: 40px;
+		margin-left: 40px;
+	}
+	.corner-title {
+		margin-left: 0;
+	}
+	label {
+		margin-bottom: 3px;
+		margin-top: 3px;
+	}
