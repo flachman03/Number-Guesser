@@ -143,7 +143,7 @@ function createCard(one, two, three) {
         </div>
         <div class="card-bottom flex">
           <p><span>${guessCount}</span>GUESSES</p>
-          <p><span></span>MINUTES</p>
+          <p><span>${seconds}</span>SECONDS</p>
           <button style="border-radius: 30px 30px; height: 20px; background-color: #6e6e6e; color: white;" class="card-close-button" id="card-close-button">
           	&times;         	
           </button>
@@ -291,10 +291,7 @@ var konamiPosition = 0;
 
 document.addEventListener('keydown', function(e) {
 	var key = konamiKeys[e.keyCode];
-	console.log(key)
 	var requiredKey = myKonamiCode[konamiPosition];
-	console.log(requiredKey)
-	console.log(konamiPosition)
 	if (key == requiredKey) {
 		konamiPosition++;
 		} else {
@@ -308,7 +305,21 @@ function activateCheats() {
 	alert('cheats activated');
 };
 
+/--------------Timer-----------------/
+var seconds = 0;
+var counter;
+function startTimer() {
+	counter = setInterval(addSecond, 1000);
+};
+function addSecond() {
+	seconds++
+	console.log(seconds)
+};
 
+function stopTimer() {
+	clearInterval(counter)
+	seconds = 0;
+}
 /----------Starting Conditions-------/
 
 startGame();
