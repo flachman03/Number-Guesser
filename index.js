@@ -133,7 +133,7 @@ function numberCheck(one, two) {
 };
 
 function createCard(one, two, three) {
-	mainRight.innerHTML = `
+	var winnerCard = `
 	  <div class="cards flex">
         <div class="card-top flex">
           <p><span class="chal-one-name">${chalOneName.innerText = one}</span></p>
@@ -152,6 +152,7 @@ function createCard(one, two, three) {
           </button>
         </div>
       </div>`;
+    mainRight.insertAdjacentHTML('afterBegin', winnerCard);
 };
 
 function updateErrors() {
@@ -166,7 +167,6 @@ function updateErrors() {
 		updateMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
 		maxBox.style.cssText = "border-color: #dd1972;";
 	} else {
-		// errorRemove.remove();
 		minBox.style.cssText = "border-color: #e8e8e8;";
 		maxBox.style.cssText = "border-color: #e8e8e8;";
 	};
@@ -184,10 +184,9 @@ function chalOneErrors() {
 		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
 		nameBox1.style.cssText = "border-color: #dd1972;";
 	} else {
-		// errorRemove.remove();
 		guessBox1.style.cssText = "border-color: #e8e8e8;";
-		chalTwoErrors();
-		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+		NaNCheck();
+		chalTwoErrors();		
 	};
 };
 
@@ -208,28 +207,6 @@ function chalTwoErrors() {
 		numberCheck(chalOneGuess.value, chalTwoGuess.value);
 	};
 };
-
-// function chalOneNaN() {
-// 	var guessMessage = document.querySelector('.guess-1-form');
-// 	var guessBox1 = document.querySelector('#one-guess');
-
-// 	if (chalOneGuess.value == "NaN") {
-// 		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">Not a number</h5>');
-// 	} else {
-// 		chalTwoNan();
-// 	};
-// };
-
-// function chalTwoNaN(); {
-//     var guessMessage = document.querySelector('.guess-1-form');
-// 	var guessBox1 = document.querySelector('#one-guess');
-
-// 	if (chalOneGuess.value == "NaN") {
-// 		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">Not a number</h5>');
-// 	} else {
-// 		numberCheck();
-// 	};
-// };
 
 
 /-------------Working on function-----------/
@@ -276,6 +253,20 @@ function buttonStyle(button) {
 		button.style.cssText = "background-color: #6e6e6e;"
 	};
 };
+
+function NaNCheck() {
+  var guess1 = chalOneGuess.value;
+  var guess2 = chalTwoGuess.value;
+  if (isNaN(guess1) || isNaN(guess2)) {
+    var message = document.querySelector('.nan-error-message');
+    chalOneGuess.style.cssText = "border-color: #dd1972;"
+    message.style.cssText = "visibility: visible;";
+  } else {
+  	chalOneGuess.style.cssText = "border-color: black;"
+	message.style.cssText = "visibility: hidden;";
+  }
+};
+
 
 /----------Starting Conditions-------/
 

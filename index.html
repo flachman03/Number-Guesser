@@ -18,6 +18,7 @@
           <div class="min-range flex">
             <label for="min-range-input">Min Range</label>
             <input class="input-height text-box" id="min-range" type="text" name=" min-range-input">
+            <p class="error range-error-message">Error</p>
           </div>
           <div class="max-range flex">
             <label for="max-range-input">Max Range</label>
@@ -37,7 +38,8 @@
             </div>
             <div class="chall-guess">
               <label for="challenger-one-guess">Guess</label>
-              <input class="input-height guess-return text-box" id="one-guess" type="number" name="challenger-one-guess">
+              <input class="input-height guess-return text-box" id="one-guess" type="text" name="challenger-one-guess">
+              <p class="error nan-error-message">Error</p>
             </div>
           </div>
         </form>
@@ -50,7 +52,7 @@
             </div> 
             <div class="chall-guess"> 
               <label for="challenger-two-guess">Guess</label>
-              <input class="input-height guess-return text-box" id="two-guess" type="number" name="challenger-two-guess">
+              <input class="input-height guess-return text-box" id="two-guess" type="text" name="challenger-two-guess">
             </div>
           </div>
         </form>
@@ -79,23 +81,24 @@
       </div>
     </section>
     <section class="main-right flex">
-      <!-- <div class="cards flex">
+      <div class="cards flex">
         <div class="card-top flex">
-          <p><span class="chal-one-name">CHALLENGER NAME</span></p>
+          <p><span class="chal-one-name">CHALLENGER 1</span></p>
           <p>VS</p>
-          <p><span class="chal-two-name">CHALLENGER NAME</span></p>
+          <p><span class="chal-two-name">CHALLENGER 2</span></p>
         </div>
         <div class="card-middle flex">
-          <h3><span>CHALLENGER 1 NAME</span></h3>
+          <h3><span>CHALLENGER WIN</span></h3>
           <h4>WINNER</h43>
         </div>
         <div class="card-bottom flex">
-          <p><span></span>GUESSES</p>
-          <p><span></span>MINUTES</p>
-          <button>
+          <p><span class="guess-num">#</span>GUESSES</p>
+          <p><span>#</span>MINUTES</p>
+          <button class="card-close-button" id="card-close-button">
+            &times;
           </button>
         </div>
-      </div> -->
+      </div>
     </section>
   </main>
   <script type="text/javascript" src="index.js"></script>
