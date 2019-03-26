@@ -21,12 +21,11 @@ var feedback2 = document.querySelector('.guess-feedback-2');
 var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
+var guessCount = 0;
+
 var closeButton = document.querySelector('#card-close-button');
 var mainRight = document.querySelector('.main-right');
 
-
-minRange.value = 1;
-maxRange.value = 100;
 
 /----------Event Listeners----------/
 
@@ -53,7 +52,6 @@ submitButton.addEventListener('click', function() {
 resetButton.addEventListener('click', function(){
 	resetGame();
 	enableButton(updateButton);
-	randomNumber(1, 100);
 });
 
 clearButton.addEventListener('click', function() {
@@ -88,13 +86,12 @@ function enableButton(button) {
 };
 
 function resetGame() {
-	minRange.value = 1;
-	maxRange.value = 100;
-	clearGame();
-	minSpan.innerText = minRange.value;
-	maxSpan.innerText = maxRange.value;
+	startGame();
+	changeRange();
 	setName('Challenger 1','Challenger 2');
+	clearGame();
 	enableButton(updateButton);
+
 };
 
 function clearGame() {
@@ -145,8 +142,8 @@ function createCard(one, two, three) {
           <h4>WINNER</h43>
         </div>
         <div class="card-bottom flex">
-          <p><span></span>GUESSES</p>
-          <p><span></span>MINUTES</p>
+          <p><span>${guessCount}</span>GUESSES</p>
+          <p><span>${seconds}</span>SECONDS</p>
           <button style="border-radius: 30px 30px; height: 20px; background-color: #6e6e6e; color: white;" class="card-close-button" id="card-close-button">
           	&times;         	
           </button>
@@ -233,6 +230,7 @@ function guessCheck() {
 		guessBox.insertAdjacentHTML('afterend', '<h5>Error</5>');
 	} else {
 		numberCheck(chalOneGuess.value, chalTwoGuess.value);
+		guessCount += 2;
 	};
 };
 
@@ -266,7 +264,50 @@ function NaNCheck() {
 	message.style.cssText = "visibility: hidden;";
   }
 };
+/-----------Konami Code--------------/
+var konamiKeys = {
+	37: 'left',
+	38: 'up',
+	39: 'right',
+	40: 'down',
+	65: 'a',
+	66: 'b',
+}
 
+var myKonamiCode = ['up','up','down','down','left','right','left','right','b','a'];
+var konamiPosition = 0;
+
+document.addEventListener('keydown', function(e) {
+	var key = konamiKeys[e.keyCode];
+	var requiredKey = myKonamiCode[konamiPosition];
+	if (key == requiredKey) {
+		konamiPosition++;
+		} else {
+			konamiPosition = 0;
+		};
+	if (konamiPosition == myKonamiCode.length) {
+		activateCheats();
+		};
+	});
+function activateCheats() {
+	alert('cheats activated');
+};
+
+/--------------Timer-----------------/
+var seconds = 0;
+var counter;
+function startTimer() {
+	counter = setInterval(addSecond, 1000);
+};
+function addSecond() {
+	seconds++
+	console.log(seconds)
+};
+
+function stopTimer() {
+	clearInterval(counter)
+	seconds = 0;
+}
 
 /----------Starting Conditions-------/
 
