@@ -245,6 +245,7 @@ function startGame() {
 	randomNumber(1, 100);
 	minSpan.value = 1;
 	maxSpan.value = 100;
+	guessCount = 0;
 	resetTimer();
 };
 
