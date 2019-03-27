@@ -335,10 +335,11 @@ button {
 	background-color: #6e6e6e;
 	color: white;
 	outline: none;
+}
 
-/*------------Media Queries----------*/
+/*-----------Media Queries-----------*/
 
-@media screen and (max-width: 30em) {
+@media screen and (max-width: 320px) {
 	main, 
 	.range-box, 
 	.forms-flex, 
