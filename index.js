@@ -28,6 +28,8 @@ var closeButton = document.querySelector('#card-close-button');
 var mainRight = document.querySelector('.main-right');
 var guessNum = document.querySelector('.guess-num');
 var guessMin = document.querySelector('.guess-min');
+var inputFields = document.querySelectorAll('.clear-input');
+var errorMessages = document.querySelectorAll('.pink-text');
 var random = parseInt("");
 var guessCount = 0;
 var seconds = 0;
@@ -62,11 +64,15 @@ submitButton.addEventListener('click', function() {
 
 resetButton.addEventListener('click', function(){
 	resetGame();
+	// clearErrors();
+	clearInputs();
 	enableButton(updateButton);
 });
 
 clearButton.addEventListener('click', function() {
 	clearGame();
+	// clearErrors();
+	clearInputs();
 });
 
 mainRight.addEventListener('click', function(event) {
@@ -130,6 +136,7 @@ function numberCheck(one, two) {
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
 		guessNum.innerText = guessCount;
 		guessMin.innerText = (seconds / 60).toFixed(2);
+		changeRange();
 	} else {
 		feedback1.innerText = "that's too low"
 	};
@@ -139,6 +146,9 @@ function numberCheck(one, two) {
 	} else if (two == random) {
 		feedback2.innerText = "BOOM!";
 		createCard(oneNameInput.value, twoNameInput.value, twoNameInput.value);
+		guessNum.innerText = guessCount;
+		guessMin.innerText = (seconds / 60).toFixed(2);
+		changeRange();
 	} else {
 		feedback2.innerText = "that's too low"
 	};
@@ -171,7 +181,7 @@ function createCard(one, two, three) {
 /----------SUBMIT BUTTON-----------/
 
 function guessChecks(field, errorSpot) {
-  rangeChecker(field, errorSpot);
+  // rangeChecker(field, errorSpot);
   emptyField(field, errorSpot);
   nanCheck(field, errorSpot);
 }
@@ -180,6 +190,10 @@ function emptyField(field, errorSpot) {
   if (field.value == '') {
     field.style.cssText = 'border-color: #dd1972;';
     errorSpot.innerText = 'Enter value';
+  }
+  if (field.value !== '') {
+  	field.style.cssText = 'border-color: #e8e8e8;';
+    errorSpot.innerText = '';
   }
 }
 
@@ -191,18 +205,16 @@ function nanCheck(field, errorSpot) {
 }
 
 
-function rangeChecker(field, errorSpot) {
-  if (field.value > maxRange.value || field.value < minRange.value) {
-    field.style.cssText = 'border-color: #dd1972;';
-    errorSpot.innerText = 'Guess must be within range';
-    debugger;
-  }  else {
-  // (field.value < maxRange.value && field.value > minRange.value) {
-    field.style.cssText = 'border-color: #e8e8e8;';
-    errorSpot.innerText = '';
-  }
-  // }
-}
+// function rangeChecker(field, errorSpot) {
+//   if (field.value > maxRange.value || field.value < minRange.value) {
+//     field.style.cssText = 'border-color: #dd1972;';
+//     errorSpot.innerText = 'Guess must be within range';
+//   }  else {
+//   // (field.value < maxRange.value && field.value > minRange.value) {
+//     field.style.cssText = 'border-color: #e8e8e8;';
+//     errorSpot.innerText = '';
+//   }
+// }
 
 
 //----------UPDATE BUTTON-----------//
@@ -272,6 +284,19 @@ function buttonStyle(button) {
 		button.style.cssText = "background-color: #6e6e6e;"
 	};
 };
+
+function clearInputs() {
+	for (i = 0; i < 6; i++) {
+		inputFields[i].style.cssText = 'border-color: #e8e8e8;';
+		errorMessages[i].innerText = '';
+	}
+};
+
+// function clearErrors() {
+// 	for (i = 0; i <= errorMessages.length; i++) {
+// 		errorMessages[i].innerText = '';
+// 	}
+// };
 
 
 /-----------Konami Code--------------/

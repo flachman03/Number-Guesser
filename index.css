@@ -1,41 +1,41 @@
 /*------------Global Classes-------------*/
 
 * {
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
-	margin: 0;
+  margin: 0;
 }
 
 .flex {
-	display: flex;
+  display: flex;
 }
 
 /*---------------Header----------------*/
 
 header {
-	background-color: #404041;
-	padding: 15px;
-	text-align: center;
+  background-color: #404041;
+  padding: 15px;
+  text-align: center;
 }
 
 h1 {
-	color: #dd1972;
-	font-weight: 700;
-	font-size: 38pt;
-	margin: 0px;
+  color: #dd1972;
+  font-weight: 700;
+  font-size: 38pt;
+  margin: 0px;
 }
 
 .title-light {
-	font-weight: 300;
+  font-weight: 300;
 }
 
 h2 {
-	color: #ffffff;
-	font-weight: 300;
-	font-size: 12pt;
-	justify-content: center;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 12pt;
+  justify-content: center;
 }
 
 h2::before,
@@ -50,238 +50,238 @@ h2::after {
 }
 
 h2 span {
-	margin: 0px 10px;
+  margin: 0px 10px;
 }
 
 .sub-title {
-	margin-top: 1px;
+  margin-top: 1px;
 }
 
 /*------------Main Section------------*/
 main {
-	flex-direction: row;
-	flex: 1 1 auto;
-	justify-content: space-between;
-	min-height: 100px;
-	overflow-y: scroll;
+  flex-direction: row;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  min-height: 100px;
+  overflow-y: scroll;
 }
 
 /*-----------Left Section------------*/
 
 .main-left {
-	background-color: #f7f7f7;
-	color: #404041;
-	flex-direction: column;
-	justify-content: space-around;
-	width: 50%;
+  background-color: #f7f7f7;
+  color: #404041;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
 }
 
 label {
-	display: block;
-	color: #6e6e6e;
+  display: block;
+  color: #6e6e6e;
 }
 
 input {
-	width: 100%;
+  width: 100%;
 }
 
 h5 {
-	margin: 0;
-	width: 100%;
+  margin: 0;
+  width: 100%;
 }
 
 .button {
-	background-color: #6e6e6e;
-	border-radius: 20px;
-	color: white;
-	cursor: pointer;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 13pt;
-	outline: none;
+  background-color: #6e6e6e;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13pt;
+  outline: none;
 }
 
 .button:hover {
-	background-color: #dd1972;
+  background-color: #dd1972;
 }
 
 button {
-	visibility: : hidden;
+  visibility: : hidden;
 }
 
 .middle-buttons {
-    width: 30%;
+     width: 30%;
 }
 
 .mid-buttons {
-	margin-top: 20px;
-	justify-content: space-around;
+  margin-top: 20px;
+  justify-content: space-around;
 }
 
 
 .left-box {
-    background-color: white;
-    border: solid #e8e8e8 2px;
-    margin: 10px;
+  background-color: white;
+  border: solid #e8e8e8 2px;
+  margin: 10px;
 }
 
 .corner-title {
-	font-size: 13pt;
-	font-weight: bold;
-	margin-bottom: 6px;
-	margin-left: 2.2%;
+  font-size: 13pt;
+  font-weight: bold;
+  margin-bottom: 6px;
+  margin-left: 2.2%;
 }
 
 .left-1 {
-	flex-wrap: wrap;
-	justify-content: space-around;
-	padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
 }
 
 .range-box {
-	justify-content: space-around;
-	width: 100%;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .min-range {
-	flex-direction: column;
-	width: 33%;
+  flex-direction: column;
+  width: 33%;
 }
 
 .max-range {
-	flex-direction: column;
-	width: 33%;
+  flex-direction: column;
+  width: 33%;
 
 }
 
 .update-button {
-	align-self: flex-end;
-	justify-content: center;
-	width: 20%;
+  align-self: flex-end;
+  justify-content: center;
+  width: 20%;
 }
 
 .input-height {
-	padding: 5px;
+  padding: 5px;
 }
 
 .text-box {
-	border: #e8e8e8 2px solid;
+  border: #e8e8e8 2px solid;
 }
 
 .black {
-	border-color: #e8e8e8;
+  border-color: #e8e8e8;
 }
 
 .pink {
-	border-color: #dd1972;
+  border-color: #dd1972;
 }
 
 .left-2 {
-	flex-direction: column;
-	padding: 15px;
+  flex-direction: column;
+  padding: 15px;
 }
 
 .left-2 p {
-	margin: 0;
+  margin: 0;
 }
 
 .left-3 {
-	align-items: flex-start;
-	flex-direction: row;
-	flex-wrap: wrap;
-	flex: auto;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: auto;
 }
 
 .forms-flex {
-	flex-direction: row;
-	justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .chall-name {
-	width: 350px;
+  width: 350px;
 }
 
 .chall-guess {
-	width: 30%;
-	padding-right: 30px;
+  width: 30%;
+  padding-right: 30px;
 }
 
 .error {
-	margin: 0;
-	display: none;
-	color: #dd1972;
-	font-size: 10pt;
+  margin: 0;
+  display: none;
+  color: #dd1972;
+  font-size: 10pt;
 }
 
 .pink-text {
-	color: #dd1972;
+  color: #dd1972;
 }
 
 .range-error-message {
-	display: none;
-	color: #dd1972;
-	font-size: 10pt;
+  display: none;
+  color: #dd1972;
+  font-size: 10pt;
 }
 
 .nan-error-message-2 {
-	display: none;
-	color: #dd1972;
-	font-size: 10pt;
+  display: none;
+  color: #dd1972;
+  font-size: 10pt;
 }
 
 .big-number-box {
-	flex-direction: column;
-	flex: auto;
-	text-align: center;
+  flex-direction: column;
+  flex: auto;
+  text-align: center;
 }
 
 .left-3 {
-	max-height: 250px;
+  max-height: 250px;
 }
 
 .number-boxes {
-	width: 100%;
-	padding: 20px 0px 20px 0;
+  width: 100%;
+  padding: 20px 0px 20px 0;
 }
 
 .number-boxes p {
-	color: #6e6e6e;
-	margin: 0;
-	width: 100%;
+  color: #6e6e6e;
+  margin: 0;
+  width: 100%;
 }
 
 .big-number-1 {
-	color: #dd1972;
-	font-size: 70pt;
-	font-weight: 800;
+  color: #dd1972;
+  font-size: 70pt;
+  font-weight: 800;
 }
 
 .big-number-2 {
-	color: #dd1972;
-	font-size: 70pt;
-	font-weight: 800;
+  color: #dd1972;
+  font-size: 70pt;
+  font-weight: 800;
 }
 
 .latest-score {
-	color: #6e6e6e;
-	margin: 0;
-	width: 100%;
+  color: #6e6e6e;
+  margin: 0;
+  width: 100%;
 }
 
 .chal-one-name, .chal-two-name {
-	color: #6e6e6e;
-	font-size: 14pt;
-	font-weight: bold;
+  color: #6e6e6e;
+  font-size: 14pt;
+  font-weight: bold;
 }
 
 .big-number-box p {
-	font-size: 14pt;
-	font-weight: 300;
+  font-size: 14pt;
+  font-weight: 300;
 }
 
 #span-min, #span-max {
-	color: #6e6e6e;
-	font-weight: 700;
-	text-decoration: underline;
+  color: #6e6e6e;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 /*------------Main Left-------------*/
@@ -289,9 +289,10 @@ button {
 .main-right {
 	align-items: center;
 	background-color: #d0d2d3;
-	flex-direction: column;
-	padding: 10px;
+	display: block;
 	width: 50%;
+	height: 700px;
+	overflow-y: auto;
 }
 
 .cards {

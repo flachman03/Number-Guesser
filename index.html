@@ -13,7 +13,7 @@
   </header>
   <main class="flex">
     <section class="main-left flex">
-      <div class="left-1 left-box flex">
+      <article class="left-1 left-box flex">
         <h5 class="flex corner-title">Set Range</h5>
         <form class="range-box flex">
           <div class="min-range flex">
@@ -27,20 +27,20 @@
           </div>
           <input class="update-button input-height flex button" id="update-button" type="button" name="Update" value="UPDATE">
         </form>
-      </div>
-      <div class="left-2 left-box flex">
+      </article>
+      <article class="left-2 left-box flex">
         <p>The Current Range is <span id="span-min">1</span> to <span id="span-max">100</span></p>
         <form class="guess-1-form">
           <h3><span class="chal-one-name">Challenger 1</span></h3>
           <div class="forms-flex flex">
             <div class="chall-name">
               <label for="challenger-one-input">Name</label>
-              <input class="input-height text-box black" id="one-input" type="text" name="challenger-one-input">
+              <input class="input-height text-box black clear-input" id="one-input" type="text" name="challenger-one-input">
               <p class="chal-one-error pink-text"></p>
             </div>
             <div class="chall-guess">
               <label for="challenger-one-guess">Guess</label>
-              <input class="input-height guess-return text-box black" id="one-guess" type="text" name="challenger-one-guess">
+              <input class="input-height guess-return text-box black clear-input" id="one-guess" type="text" name="challenger-one-guess">
               <p class="guess-one-error pink-text"></p>
             </div>
           </div>
@@ -50,12 +50,12 @@
           <div class="forms-flex flex">
             <div class="chall-name">
               <label for="challenger-two-input">Name</label>
-              <input class="input-height text-box black" id="two-input" type="text" name="challenger-two-input">
+              <input class="input-height text-box black clear-input" id="two-input" type="text" name="challenger-two-input">
               <p class="chal-two-error pink-text"></p>
             </div> 
             <div class="chall-guess"> 
               <label for="challenger-two-guess">Guess</label>
-              <input class="input-height guess-return text-box black" id="two-guess" type="text" name="challenger-two-guess">
+              <input class="input-height guess-return text-box black clear-input" id="two-guess" type="text" name="challenger-two-guess">
               <p class="guess-two-error pink-text"></p>
             </div>
           </div>
@@ -65,8 +65,8 @@
           <input class="button middle-buttons input-height" id="reset-button" type="button" name="RESET GAME" value="RESET GAME">
           <input class="button middle-buttons input-height" id="clear-button" type="button" name="CLEAR GAME" value="CLEAR GAME">
         </form>
-      </div>
-      <div class="left-3 left-box flex">
+      </article>
+      <article class="left-3 left-box flex">
         <h3 class="latest-score flex">Latest Score</h3>
         <div class="number-boxes flex">
           <div class="challenger-one-score big-number-box flex">
@@ -82,9 +82,9 @@
           <p class="guess-feedback-2">No Current Guess</p>
           </div>
         </div>
-      </div>
+      </article>
     </section>
-    <section class="main-right flex">
+    <section class="main-right">
     </section>
   </main>
   <script type="text/javascript" src="index.js"></script>
