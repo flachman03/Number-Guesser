@@ -289,8 +289,10 @@ button {
 .main-right {
 	align-items: center;
 	background-color: #d0d2d3;
+	display: block;
 	flex-direction: column;
-	padding: 10px;
+	height: 750px;
+	overflow-y: auto;
 	width: 50%;
 }
 
@@ -420,7 +422,9 @@ button {
 
 	.main-right {
 		padding: 0;
+		height: 100%;
 	}
+
 	h2::before,
 	h2::after {
 		width: 40px;
@@ -442,6 +446,10 @@ button {
 	.main-left,
 	.main-right {
 		width: 100%
+	}
+
+	.main-right {
+		height: 100%;
 	}
 }
 
