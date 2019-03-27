@@ -368,6 +368,7 @@ button {
 	}
 	.update-button{
 		margin-top: 10px;
+		width: 80px;
 	}
 	.middle-buttons {
 		width: 100%;
@@ -384,5 +385,46 @@ button {
 		margin-bottom: 3px;
 		margin-top: 3px;
 	}
+	.left-3 {
+		max-height: none;
+	}
+
+	h1 {
+		font-size: 32px;
+	}
+
+	.main-right {
+		padding: 0;
+	}
+	h2::before,
+	h2::after {
+		width: 40px;
+	}
+	h2 span {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 786px) {
+	body {
+		width: 80%;
+		margin: 0 auto;
+	}
+	main {
+		flex-direction: column;
+	}
+
+	.main-left,
+	.main-right {
+		width: 100%
+	}
+}
+
+@media screen and (max-width: 650px) {
+	body {
+		width: 100%;
+		margin: none;
+	}
+}
 
 
