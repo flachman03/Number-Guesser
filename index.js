@@ -18,28 +18,30 @@ var bigNumber1 = document.querySelector('.big-number-1');
 var bigNumber2 = document.querySelector('.big-number-2');
 var feedback1 = document.querySelector('.guess-feedback-1');
 var feedback2 = document.querySelector('.guess-feedback-2');
-var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
-var guessCount = 0;
 var chalOneError = document.querySelector('.chal-one-error');
 var chalTwoError = document.querySelector('.chal-two-error');
 var guessOneError = document.querySelector('.guess-one-error');
 var guessTwoError = document.querySelector('.guess-two-error');
-
 var closeButton = document.querySelector('#card-close-button');
 var mainRight = document.querySelector('.main-right');
-
+var guessNum = document.querySelector('.guess-num');
+var guessMin = document.querySelector('.guess-min');
+var random = parseInt("");
+var guessCount = 0;
+var seconds = 0;
+var counter;
 
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
 	updateErrors();
  	randomNumber(minRange.value, maxRange.value);
-	// disableButton(updateButton);
 	enableButton(resetButton);
 	enableButton(clearButton);
 	enableButton(submitButton);
+	resetTimer();
 });
 
 submitButton.addEventListener('click', function() {
@@ -52,6 +54,7 @@ submitButton.addEventListener('click', function() {
 	emptyField(twoNameInput, chalTwoError);
 	guessChecks(chalOneGuess, guessOneError);
 	guessChecks(chalTwoGuess, guessTwoError);
+	guessCount = guessCount + 2;
 	numberCheck(chalOneGuess.value, chalTwoGuess.value);
 });
 
@@ -121,8 +124,10 @@ function numberCheck(one, two) {
 	if (one > random) {
 		feedback1.innerText = "that's too high"
 	} else if (one == random) {
-		feedback1.innerText = "BOOM!";		
+		feedback1.innerText = "BOOM!";
 		createCard(oneNameInput.value, twoNameInput.value, oneNameInput.value);
+		guessNum.innerText = guessCount;
+		guessMin.innerText = (seconds / 60).toFixed(2);
 	} else {
 		feedback1.innerText = "that's too low"
 	};
@@ -141,17 +146,17 @@ function createCard(one, two, three) {
 	var winnerCard = `
 	  <div class="cards flex">
         <div class="card-top flex">
-          <p><span class="chal-one-name">${chalOneName.innerText = one}</span></p>
+          <p><span class="chal-one-name">${chalOneName.innerText = (one).toUpperCase()}</span></p>
           <p>VS</p>
-          <p><span class="chal-two-name">${chalTwoName.innerText = two}</span></p>
+          <p><span class="chal-two-name">${chalTwoName.innerText = (two).toUpperCase()}</span></p>
         </div>
         <div class="card-middle flex">
-          <h3><span>${chalTwoName.innerText = three}</span></h3>
+          <h3><span>${chalTwoName.innerText = (three).toUpperCase()}</span></h3>
           <h4>WINNER</h43>
         </div>
         <div class="card-bottom flex">
-          <p><span>${guessCount}</span>GUESSES</p>
-          <p><span>${seconds}</span>SECONDS</p>
+          <p><span>${guessCount }</span> GUESSES</p>
+          <p><span>${seconds }</span> SECONDS</p>
           <button class="card-close-button" id="card-close-button">
           	&times;         	
           </button>
@@ -240,6 +245,7 @@ function startGame() {
 	randomNumber(1, 100);
 	minSpan.value = 1;
 	maxSpan.value = 100;
+	resetTimer();
 };
 
 
@@ -292,8 +298,7 @@ function activateCheats() {
 };
 
 /--------------Timer-----------------/
-var seconds = 0;
-var counter;
+
 function startTimer() {
 	counter = setInterval(addSecond, 1000);
 };
@@ -305,7 +310,12 @@ function addSecond() {
 function stopTimer() {
 	clearInterval(counter)
 	seconds = 0;
-}
+};
+
+function resetTimer() {
+	stopTimer();
+	startTimer();
+};
 
 /----------Starting Conditions-------/
 
