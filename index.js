@@ -38,87 +38,88 @@ var counter;
 /----------Event Listeners----------/
 
 updateButton.addEventListener('click', function() {
-	updateErrors();
- 	randomNumber(minRange.value, maxRange.value);
-	enableButton(resetButton);
-	enableButton(clearButton);
-	enableButton(submitButton);
-	resetTimer();
+  updateErrors();
+  randomNumber(minRange.value, maxRange.value);
+  enableButton(resetButton);
+  enableButton(clearButton);
+  enableButton(submitButton);
+  resetTimer();
 });
 
 submitButton.addEventListener('click', function() {
-	setName(oneNameInput.value, twoNameInput.value);
-	enableButton(resetButton);
-	enableButton(clearButton);
-	bigNumber1.innerText = chalOneGuess.value;
-	bigNumber2.innerText = chalTwoGuess.value;
-	emptyField(oneNameInput, chalOneError);
-	emptyField(twoNameInput, chalTwoError);
-	guessChecks(chalOneGuess, guessOneError);
-	guessChecks(chalTwoGuess, guessTwoError);
-	guessCount = guessCount + 2;
+  setName(oneNameInput.value, twoNameInput.value);
+  enableButton(resetButton);
+  enableButton(clearButton);
+  bigNumber1.innerText = chalOneGuess.value;
+  bigNumber2.innerText = chalTwoGuess.value;
+  emptyField(oneNameInput, chalOneError);
+  emptyField(twoNameInput, chalTwoError);
+  guessChecks(chalOneGuess, guessOneError);
+  guessChecks(chalTwoGuess, guessTwoError);
+  guessCount = guessCount + 2;
 	numberCheck(chalOneGuess.value, chalTwoGuess.value);
 });
 
 
 
 resetButton.addEventListener('click', function(){
+
 	resetGame();
-	// clearErrors();
 	clearInputs();
 	enableButton(updateButton);
 });
 
 clearButton.addEventListener('click', function() {
 	clearGame();
-	// clearErrors();
 	clearInputs();
+  resetGame();
+  enableButton(updateButton);
 });
 
 mainRight.addEventListener('click', function(event) {
-	if (event.target.className === 'card-close-button') {
-		event.target.parentNode.parentNode.remove();
+  if (event.target.className === 'card-close-button') {
+  	event.target.parentNode.parentNode.remove();
 	}
 });
 
 /----------Functions----------/
 function randomNumber(min, max) {
-	random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
-	console.log(random);
+  random = Math.floor((Math.random()*((max - min) + 1)) + parseInt(min));
+  console.log(random);
 };
 
 function rangeFunc() {
-	minSpan.innerText = minRange.value;
-	maxSpan.innerText = maxRange.value;
+  minSpan.innerText = minRange.value;
+  maxSpan.innerText = maxRange.value;
 };
 
 function disableButton(button) {
-	button.disabled = true;
-	buttonStyle(button);
+  button.disabled = true;
+  buttonStyle(button);
 };
 
 function enableButton(button) {
-	button.disabled = false;
-	buttonStyle(button);
+  button.disabled = false;
+  buttonStyle(button);
 };
 
 function resetGame() {
-	startGame();
-	changeRange();
-	setName('Challenger 1','Challenger 2');
-	clearGame();
+  startGame();
+  changeRange();
+  setName('Challenger 1','Challenger 2');
+  clearGame();
 	// enableButton(updateButton);
 
 };
 
 function clearGame() {
-	oneNameInput.value = '';
-	twoNameInput.value = '';
-	chalOneGuess.value = '';
-	chalTwoGuess.value = '';
-	bigNumber1.innerText = 'none';
-	bigNumber2.innerText = 'none';
-	startGame();
+  oneNameInput.value = '';
+  twoNameInput.value = '';
+  chalOneGuess.value = '';
+  chalTwoGuess.value = '';
+  bigNumber1.innerText = 'none';
+  bigNumber2.innerText = 'none';
+  startGame();
 };
 
 function setName(one, two) {
@@ -325,7 +326,7 @@ document.addEventListener('keydown', function(e) {
 		};
 	});
 function activateCheats() {
-	alert('cheats activated');
+	alert('Ryan and Steve are the greatest Programmers/Humans!!');
 };
 
 /--------------Timer-----------------/
@@ -335,7 +336,6 @@ function startTimer() {
 };
 function addSecond() {
 	seconds++
-	console.log(seconds)
 };
 
 function stopTimer() {

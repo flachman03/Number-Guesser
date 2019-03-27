@@ -421,7 +421,9 @@ button {
 
 	.main-right {
 		padding: 0;
+		height: 100%;
 	}
+
 	h2::before,
 	h2::after {
 		width: 40px;
@@ -443,6 +445,10 @@ button {
 	.main-left,
 	.main-right {
 		width: 100%
+	}
+
+	.main-right {
+		height: 100%;
 	}
 }
 
