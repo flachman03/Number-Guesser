@@ -22,6 +22,10 @@ var random = parseInt("");
 var mainRight = document.querySelector('.main-right');
 var rangeBox = document.querySelector('.range-box');
 var guessCount = 0;
+var chalOneError = document.querySelector('.chal-one-error');
+var chalTwoError = document.querySelector('.chal-two-error');
+var guessOneError = document.querySelector('.guess-one-error');
+var guessTwoError = document.querySelector('.guess-two-error');
 
 var closeButton = document.querySelector('#card-close-button');
 var mainRight = document.querySelector('.main-right');
@@ -31,9 +35,8 @@ var mainRight = document.querySelector('.main-right');
 
 updateButton.addEventListener('click', function() {
 	updateErrors();
-	rangeCheck();
-	randomNumber(minRange.value, maxRange.value);
-	disableButton(updateButton);
+ 	randomNumber(minRange.value, maxRange.value);
+	// disableButton(updateButton);
 	enableButton(resetButton);
 	enableButton(clearButton);
 	enableButton(submitButton);
@@ -45,8 +48,11 @@ submitButton.addEventListener('click', function() {
 	enableButton(clearButton);
 	bigNumber1.innerText = chalOneGuess.value;
 	bigNumber2.innerText = chalTwoGuess.value;
-	chalOneErrors();
-	guessCheck();
+	emptyField(oneNameInput, chalOneError);
+	emptyField(twoNameInput, chalTwoError);
+	guessChecks(chalOneGuess, guessOneError);
+	guessChecks(chalTwoGuess, guessTwoError);
+	numberCheck(chalOneGuess.value, chalTwoGuess.value);
 });
 
 resetButton.addEventListener('click', function(){
@@ -90,7 +96,7 @@ function resetGame() {
 	changeRange();
 	setName('Challenger 1','Challenger 2');
 	clearGame();
-	enableButton(updateButton);
+	// enableButton(updateButton);
 
 };
 
@@ -99,6 +105,8 @@ function clearGame() {
 	twoNameInput.value = '';
 	chalOneGuess.value = '';
 	chalTwoGuess.value = '';
+	bigNumber1.innerText = 'none';
+	bigNumber2.innerText = 'none';
 	startGame();
 };
 
@@ -144,7 +152,7 @@ function createCard(one, two, three) {
         <div class="card-bottom flex">
           <p><span>${guessCount}</span>GUESSES</p>
           <p><span>${seconds}</span>SECONDS</p>
-          <button style="border-radius: 30px 30px; height: 20px; background-color: #6e6e6e; color: white;" class="card-close-button" id="card-close-button">
+          <button class="card-close-button" id="card-close-button">
           	&times;         	
           </button>
         </div>
@@ -152,57 +160,74 @@ function createCard(one, two, three) {
     mainRight.insertAdjacentHTML('afterBegin', winnerCard);
 };
 
+
+/----------SUBMIT BUTTON-----------/
+
+function guessChecks(field, errorSpot) {
+  rangeChecker(field, errorSpot);
+  emptyField(field, errorSpot);
+  nanCheck(field, errorSpot);
+}
+
+function emptyField(field, errorSpot) {
+  if (field.value == '') {
+    field.style.cssText = 'border-color: #dd1972;';
+    errorSpot.innerText = 'Enter value';
+  }
+}
+
+function nanCheck(field, errorSpot) {
+  if (isNaN(field.value)) {
+    field.style.cssText = 'border-color: #dd1972;';
+    errorSpot.innerText = 'Enter a number';
+  }
+}
+
+
+function rangeChecker(field, errorSpot) {
+  if (field.value > maxRange.value || field.value < minRange.value) {
+    field.style.cssText = 'border-color: #dd1972;';
+    errorSpot.innerText = 'Guess must be within range';
+  }
+  if ((field.value < maxRange.value) && (field.value > minRange.value)) {
+    field.style.cssText = 'border-color: #e8e8e8;';
+    errorSpot.innerText = '';
+  }
+}
+
+
+//----------UPDATE BUTTON-----------//
+
 function updateErrors() {
-	var updateMessage = document.querySelector('.range-box');
-	var minBox = document.querySelector('#min-range');
-	var maxBox = document.querySelector('#max-range');
+  var updateMessage = document.querySelector('.range-error-message');
+  var minBox = document.querySelector('#min-range');
+  var maxBox = document.querySelector('#max-range');
 
-	if (minBox.value == "") {
-		updateMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		minBox.style.cssText = "border-color: #dd1972;";
-	} else if (maxBox.value == "") {
-		updateMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		maxBox.style.cssText = "border-color: #dd1972;";
-	} else {
-		minBox.style.cssText = "border-color: #e8e8e8;";
-		maxBox.style.cssText = "border-color: #e8e8e8;";
-	};
+  if (minBox.value == "") {
+    updateMessage.style.cssText = "display: initial;";
+    minBox.style.cssText = "border-color: #dd1972;";
+    enableButton(updateButton);
+  } else if (maxBox.value == "") {
+    updateMessage.style.cssText = "display: initial;";
+    maxBox.style.cssText = "border-color: #dd1972;";
+    enableButton(updateButton);
+  } else {
+  	updateMessage.style.cssText = "display: none;";
+    minBox.style.cssText = "border-color: #e8e8e8;";
+    maxBox.style.cssText = "border-color: #e8e8e8;";
+    rangeCheck();
+  };
 };
 
-function chalOneErrors() {
-	var guessMessage = document.querySelector('.guess-1-form');
-	var guessBox1 = document.querySelector('#one-guess');
-	var nameBox1 = document.querySelector('#one-input');
 
-	if (chalOneGuess.value == "") {
-		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		guessBox1.style.cssText = "border-color: #dd1972;";
-	} else if (oneNameInput.value == "") {
-		guessMessage.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		nameBox1.style.cssText = "border-color: #dd1972;";
-	} else {
-		guessBox1.style.cssText = "border-color: #e8e8e8;";
-		NaNCheck();
-		chalTwoErrors();		
-	};
-};
-
-function chalTwoErrors() {
-	var guessMessage2 = document.querySelector('.guess-2-form');
-	var guessBox2 = document.querySelector('#two-guess');
-	var nameBox2 = document.querySelector('#two-input');
-
-	if (chalTwoGuess.value == "") {
-		guessMessage2.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		guessBox2.style.cssText = "border-color: #dd1972;";
-	} else if (twoNameInput.value == "") {
-		guessMessage2.insertAdjacentHTML('afterend', '<h5 style="color: #dd1972;" class="error">No value</h5>');
-		nameBox2.style.cssText = "border-color: #dd1972;";
-	} else {
-		// errorRemove.remove();
-		guessBox2.style.cssText = "border-color: #e8e8e8;";
-		numberCheck(chalOneGuess.value, chalTwoGuess.value);
-	};
+function rangeCheck() {
+  var message = document.querySelector('.range-error-message');
+  if (minRange.value < maxRange.value) {
+    rangeFunc(); 
+  } else {
+    message.style.cssText = "display: initial;";
+  }
+  enableButton(updateButton);
 };
 
 
@@ -213,26 +238,10 @@ function startGame() {
 	disableButton(resetButton);
 	disableButton(clearButton);
 	randomNumber(1, 100);
+	minSpan.value = 1;
+	maxSpan.value = 100;
 };
 
-function rangeCheck() {
-	var rangeBox = document.querySelector('.range-box');
-	if (minRange.value < maxRange.value) {
-		rangeFunc(); 
-	} else {
-		rangeBox.insertAdjacentHTML('afterend', '<h5>Error</h5>');
-	}
-};
-
-function guessCheck() {
-	var guessBox = document.querySelector('.forms-flex');
-	if ((chalOneGuess.value > maxRange.value) || (chalOneGuess.value < minRange.value)) {
-		guessBox.insertAdjacentHTML('afterend', '<h5>Error</5>');
-	} else {
-		numberCheck(chalOneGuess.value, chalTwoGuess.value);
-		guessCount += 2;
-	};
-};
 
 function changeRange() {
 	maxRange.value = parseInt(maxRange.value) + 10;
@@ -252,18 +261,7 @@ function buttonStyle(button) {
 	};
 };
 
-function NaNCheck() {
-  var guess1 = chalOneGuess.value;
-  var guess2 = chalTwoGuess.value;
-  if (isNaN(guess1) || isNaN(guess2)) {
-    var message = document.querySelector('.nan-error-message');
-    chalOneGuess.style.cssText = "border-color: #dd1972;"
-    message.style.cssText = "visibility: visible;";
-  } else {
-  	chalOneGuess.style.cssText = "border-color: black;"
-	message.style.cssText = "visibility: hidden;";
-  }
-};
+
 /-----------Konami Code--------------/
 var konamiKeys = {
 	37: 'left',
