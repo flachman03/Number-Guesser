@@ -36,7 +36,6 @@ var mainRight = document.querySelector('.main-right');
 updateButton.addEventListener('click', function() {
 	updateErrors();
  	randomNumber(minRange.value, maxRange.value);
-	// disableButton(updateButton);
 	enableButton(resetButton);
 	enableButton(clearButton);
 	enableButton(submitButton);
@@ -54,6 +53,8 @@ submitButton.addEventListener('click', function() {
 	guessChecks(chalTwoGuess, guessTwoError);
 	numberCheck(chalOneGuess.value, chalTwoGuess.value);
 });
+
+
 
 resetButton.addEventListener('click', function(){
 	resetGame();
@@ -188,11 +189,13 @@ function rangeChecker(field, errorSpot) {
   if (field.value > maxRange.value || field.value < minRange.value) {
     field.style.cssText = 'border-color: #dd1972;';
     errorSpot.innerText = 'Guess must be within range';
-  }
-  if ((field.value < maxRange.value) && (field.value > minRange.value)) {
+    debugger;
+  }  else {
+  // (field.value < maxRange.value && field.value > minRange.value) {
     field.style.cssText = 'border-color: #e8e8e8;';
     errorSpot.innerText = '';
   }
+  // }
 }
 
 
@@ -240,6 +243,8 @@ function startGame() {
 	randomNumber(1, 100);
 	minSpan.value = 1;
 	maxSpan.value = 100;
+	minRange.value = 1;
+	maxRange.value = 100;
 };
 
 
