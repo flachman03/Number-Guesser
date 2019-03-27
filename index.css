@@ -243,6 +243,10 @@ button {
   padding: 20px 0px 20px 0;
 }
 
+.challenger-two-score {
+	border-left: 2px #e8e8e8 solid;
+}
+
 .number-boxes p {
   color: #6e6e6e;
   margin: 0;
@@ -392,6 +396,11 @@ button {
 		padding-bottom: 5px;
 		border-bottom: 1px solid #d0d2d3;
 	}
+
+	.challenger-two-score{
+		border: none;
+	}
+	
 	.update-button{
 		margin-top: 10px;
 		width: 80px;
