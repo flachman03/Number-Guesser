@@ -262,6 +262,7 @@ function startGame() {
 	randomNumber(1, 100);
 	minSpan.value = 1;
 	maxSpan.value = 100;
+	guessCount = 0;
 	minRange.value = 1;
 	maxRange.value = 100;
 	resetTimer();
